@@ -96,16 +96,18 @@
     height: 350px;
     width: 50vh;
     position: fixed;
+    margin-top: 5px;
 }
 
 .form {
     height: 1200px;
-     margin-left: 10vh;
+     right: 0px;
      position: fixed;
     
 }
 
 .ara{
    text-align: center;
-    margin: 40vh;
+    margin-left: 50vh; /*ortalanması için*/
+    width: 55vw;
 }
