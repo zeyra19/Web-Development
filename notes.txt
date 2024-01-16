@@ -1,0 +1,53 @@
+HTML LESSONS: https://www.youtube.com/watch?v=Y86zzWRle3g&list=PLURN6mxdcwL_D8H1iki2YCmp-lNyNAdbz
+
+HTML dosyasını açmak için komut: CTRL + SHIFT + V
+Eşittir shift + 0
+
+dotted, dashed, solid, double, groove, ridge, inset, outset= BORDER ÖRNEK KULLANIMI İÇİN
+
+border radious kenarları eğmek için, tam yuvarlak içinse 50% yap
+sabit genişlik için 100px, tarayıcı genişliği için 50% yap
+
+En dış nesneyle bir nesne arasındaki boşluğu ayarlamak için 
+margin-top=üst ÖRNEK margin-top=:60px;
+margin-bottom=alt
+margin-left= sol
+
+text align= metni hizalar LEFT,RİGHT,CENTER
+font weight=yazıyı kalınlaştırır BOLD
+font family=yazının tipini değiştirir
+font style= yazıyı italik yapar
+text transform= yazının bütün harflerini büyültüp(UPPERCASE) küçültebilir (LOWERCASE)
+letter spacing 2px= harfler arası boşluk bırakır
+text decoration= yazının altını,üstünü çizer
+word spacing 3px= kelimelerin arasını açar
+
+<form style="text-align: center;"> <!--Bu özellik, bir öğenin içindeki metni sağa ve sola doğru merkezlemek için kullanılır. -->
+
+ "position: static" kullanıldığında,
+  öğe normal akışta yer alır. Yani, öğe, sayfanın normal akışında bulunan diğer öğelerin etrafında yer alır
+
+  position relative top 10px left 20px öğe normal akıştaki yerini alır, ancak bu yerden belirli bir uzaklıkta ötelenir.
+
+  position fixed  öğenin sayfanın görünen kısmına 
+  göre sabit bir konumda kalmasını sağlar, yani kullanıcı sayfayı kaydırdıkça öğe hareket etmez
+
+* etiketini kullanırsan css dosyalarını hepsini seçer
+
+th, td{örnek} dersen sadece o ikisini seçer
+
+div>p parenti div olan bütün p,leri seçer
+
+float: right CSS özelliği, bir öğeyi sağa yaslamak için kullanılır. 
+Bu özellik, öğeyi normal akıştan çıkarır ve belirtilen yönde (bu durumda sağa) konumlandırır.
+Genellikle metin veya resim gibi içerik öğelerini yan yana düzenlemek veya sayfa içeriğini sarma (wrap) amacıyla kullanılır
+
+BORDER-COLLAPSE: COLLAPSE YAPARSAK ÇİFT BORDERLAR TEK BORDER,A DÖNÜŞÜR
+
+overflow scroll asagı yukarı taşma olsa da olmasa da ekler, overflow auto sadece taşıyosa ekler
+
+yatay menü için display inline-block etiketini kullan
+
+color tag'ında ki rgba saydamlık verir
+
+ bir web sitesinde gezinme menüsü

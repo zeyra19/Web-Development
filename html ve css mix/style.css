@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background: url(web.jpg); /*arka plan resmi için*/
+    height: 100vh; /*aşağıya doğru uzatmak için*/
+    background-size: 100% 100%; /*ekrana tam sığdırmak için*/
+}
+
+.container .navbar{
+    width: 100%;
+    height: 80px;
+    background: rgba(22, 112, 214, 0.4)
+}
+
+.navbar .logo{
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 20px; /*hizzalansın diye margin etiketlerinden yararlandım*/
+}
+
+.navbar .logo a{
+    text-decoration: none;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: #f3f3f3;
+}
+
+/*navbarın içindeki ul'leri al*/
+.navbar ul{
+    float: right;
+    margin-right: 20px;
+}
+
+.navbar ul li{
+    list-style: none;
+    display:inline-block; /*yan yana gelmesini sağlamak için*/
+    margin: 0 8px; /*aralarını açmak için*/
+    line-height: 80px; /*yukaıdan aşağı doğru hiza alması için*/
+}
+
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px; /*yazı boyutunu büyüttüm*/
+    padding: 6px 13px;
+    font-family: Roboto;
+} 
+
+.navbar ul li a.active, /*aktif olanı kaplasın diye ikisini bir kulandım*/
+.navbar ul li a:hover{
+    background:#ff6e00;
+    border-radius: 2px; /*köşeleri yumuşatmak için*/
+}
+
+.container .center{
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%,-50%); /* Yatayda 50 piksel, dikeyde 20 piksel kaydırmak için virgül koymayı unutma */
+    font-family: sans-serif;
+    user-select: none; /*gelen kullanıcı seçemez, kopyalayamaz*/
+}
+
+.center h1{
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    width: 900px;
+    text-align: center; /*tam ortalanması için*/
+}
+.center h2{
+    color: white;
+    font-size:50px ;
+    font-weight: bold;
+    width: 885px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.center .buttons{
+    margin: 35px 280px; /*butonların hizasını ayarladım*/
+}
+
+/*buttons classının içindeki butonlar için*/
+.buttons button{
+height: 50px;
+width: 150px;
+font-size: 19px;
+font-weight: bold;
+color:#ffb3b3;
+background: rgb(207,96,88);
+border: 1px solid red;
+cursor: pointer; /* fare imlecini bir işaretçi şeklinde değiştirdim*/
+outline: none; /*tıkladığımız zaman tablo görünümünü yok etmek için*/
+border-radius: 25px; /*kare olan butonların köşesini yumuşattım*/
+transition: .5s; /*buton geçişini yavaşlatmak için*/
+}
+
+/*butonlara fareyi götürdüğünde kaplasın diye hover tag'ı açtım*/
+.buttons button:hover{
+    background: #fff;
+
+}

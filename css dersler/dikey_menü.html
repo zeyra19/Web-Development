@@ -1,0 +1,66 @@
+<head>
+    <title>dikey menü</title>
+    <style>
+        ul{
+            list-style-type: none; /*liste stil tipi olmasın*/
+            width: 50%;
+
+        } 
+
+        /*ul etiketi içindeki li etiketi ve onun içindeki a'lar*/
+        ul li a{text-decoration: none; /*altındaki çizgileri kaldırır*/
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+             font-weight:bold;
+            
+        }
+        /*ul'nin altındaki tüm li'leri seçtik*/
+        ul li{padding: 10px;
+              background-color: palegoldenrod;
+
+        }
+        /*üstüne gelindiğinde rengi değişir*/
+        ul li :hover{
+            background-color: blue;
+            transition: 0.5; /*üzerine geldiğinde aradaki geçişin saniyesini yavaşlat*/
+        }
+
+        ul li:nth-child(1){ /*sadece ilk satırırn rengini değiştirmek için yaptım*/
+            background-color: teal;
+        }
+
+        #news-content{
+            display: none;
+            position: absolute; 
+            z-index: 1;
+            margin-top: 15px; /*tam yapışsın diye*/
+            margin-left: -15px; /*sola kaysın diye*/
+            width: 100px;
+
+
+        }
+        .news-li:hover #news-content{ /*şu li'nin üzerine geldiğimde şu id'e sahip etiketin özellikleri block olsun*/
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <!--sembol eklemek için diezden sonra <i> etiketini kullan -->
+        <li class="news-li">
+            <a href="#">home</a>
+            <div id="news-content">
+                <ul>
+                    <li style="display: block;"><a href="#">news 1</a> </li>
+                    <li style="display: block;"><a href="#">news 2</a></li>
+                    <li style="display: block;"><a href="#">news 3</a></li>
+                    <li style="display: block;"><a href="#">news 4</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">news</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">about</a></li>
+    </ul>
+</body>

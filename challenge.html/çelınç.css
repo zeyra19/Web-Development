@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contents {
+    display: flex;
+    margin-top: 8vh;
+    flex-direction: row;
+    width: 100%;
+}
+
+.element{
+    position: relative;
+    
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    padding: 30px 100px;
+
+}
+
+.header{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background: black;
+
+}
+
+.logo{
+    width: 10%;
+    height: auto;
+}
+
+.logo a i{
+    color: white;
+    margin-left: 24px;
+}
+.sci {width: 70%;}
+
+.sci ul{
+    display: flex;
+
+}
+
+.sci ul li{
+    list-style: none;
+
+}
+
+.sci ul li a{
+    position: relative;
+    font-size: 20px;
+    margin-right: 20px; /*aralarındaki boşluk*/
+    color: white;
+    text-decoration: none; /*alttaki çizgileri yok eder*/
+}
+.stop {
+    display: flex;
+    justify-content: end;
+    flex-direction: row-reverse;
+    width: 30%;
+    margin-right: 12px;
+}
+
+.stop ul{
+    display: flex;
+}
+
+.stop ul li{
+    list-style: none;
+
+}
+
+.stop ul li a{
+    position: relative;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.taşma{
+    overflow: scroll;
+    border: 5px solid black;
+    font-weight: 13px;
+    padding: 5px;
+    height: 350px;
+    width: 50vh;
+    position: fixed;
+}
+
+.form {
+    height: 1200px;
+     margin-left: 10vh;
+     position: fixed;
+    
+}
+
+.ara{
+   text-align: center;
+    margin: 40vh;
+}
