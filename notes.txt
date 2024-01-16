@@ -51,3 +51,25 @@ yatay menü için display inline-block etiketini kullan
 color tag'ında ki rgba saydamlık verir
 
  bir web sitesinde gezinme menüsü
+
+
+ ---
+ GİT KOMUTLARI
+değişiklikleri ekle
+
+ - git add
+
+-  değişiklikleri kaydet
+
+ git commit -m "commit mesajın neyse onu yaz"
+
+-  değişiklikleri gönder
+
+ git push
+
+GIT DURUM GÖRÜNTÜLE
+
+git status
+
+değişiklikleri uzaktan getir
+git pull
