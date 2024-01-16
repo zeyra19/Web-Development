@@ -57,7 +57,7 @@ color tag'ında ki rgba saydamlık verir
  GİT KOMUTLARI
 değişiklikleri ekle
 
- - git add
+ - git add *
 
 -  değişiklikleri kaydet
 
