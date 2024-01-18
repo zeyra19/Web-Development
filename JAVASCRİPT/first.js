@@ -13,6 +13,28 @@ console.log({name:"zehra", surname:"cart curt"})
 
 let a=5;
 let b=10;
+var at = 300
+var isDesc = true
+
+var zeyraElm = document.getElementById("zeyra")
+
+function raEkleyici() {
+    var zeyraValue = zeyraElm.innerHTML
+
+    // zeyraElm.innerHTML = zeyraValue + "ra"
+    if (isDesc) {
+        at -= 10
+    }
+    else {
+        at += 10
+    }
+    if (at == 0 || at == 310) isDesc = !isDesc
+    
+    zeyraElm.style.left = at + "px"
+}
+setInterval(raEkleyici, 50)
+
+document.getElementById("zeyra").innerHTML = "zeyrararararara"
 console.log(a+b); //ikisinin toplamını konsolo yazdırmak için yaptım
 //console.log("iki sayının toplamı:" ,a+b); şeklinde de yapabiliirm
 
