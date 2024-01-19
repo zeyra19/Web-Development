@@ -17,6 +17,7 @@
         /*ul'nin altındaki tüm li'leri seçtik*/
         ul li{padding: 10px;
               background-color: palegoldenrod;
+              left: 3px
 
         }
         /*üstüne gelindiğinde rengi değişir*/
@@ -40,16 +41,18 @@
 
         }
         .news-li:hover #news-content{ /*şu li'nin üzerine geldiğimde şu id'e sahip etiketin özellikleri block olsun*/
-            display: block;
+            display: block; /*"display: block;" stilini içerir ve bu nedenle bir blok elementi olarak davranır. 
+            Bu, öğenin kendisinden önce ve sonra yeni satırlar ekleyerek geniş bir alanı kaplamasına neden olur.*/
+
         }
         
     </style>
 </head>
 <body>
     <ul>
-        <!--sembol eklemek için diezden sonra <i> etiketini kullan -->
+        <!--sembol eklemek için #'den sonra <i> etiketini kullan -->
         <li class="news-li">
-            <a href="#">home</a>
+            <a href="#">news</a>
             <div id="news-content">
                 <ul>
                     <li style="display: block;"><a href="#">news 1</a> </li>
@@ -59,7 +62,7 @@
                 </ul>
             </div>
         </li>
-        <li><a href="#">news</a></li>
+        <li><a href="#">home</a></li>
         <li><a href="#">contact</a></li>
         <li><a href="#">about</a></li>
     </ul>

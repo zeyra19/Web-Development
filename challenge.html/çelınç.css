@@ -8,7 +8,7 @@
 .contents {
     display: flex;
     margin-top: 8vh;
-    flex-direction: row;
+    flex-direction: row; /*flex-direction: row; olarak ayarlanırsa, elemanlar yatay bir çizgide soldan sağa doğru sıralanır*/
     width: 100%;
 }
 
@@ -16,7 +16,7 @@
     position: relative;
     
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column; /*flex-direction: column; olarak ayarlanırsa, elemanlar dikey bir çizgide üstten alta doğru sıralanır*/
     display: flex;
     justify-content: center;
     padding: 30px 100px;
@@ -67,9 +67,9 @@
 .stop {
     display: flex;
     justify-content: end;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /*sağdan sola doğru sıralamak için kullanılır.*/
     width: 30%;
-    margin-right: 12px;
+    margin-right: 12px; /*sağdan 12px*/
 }
 
 .stop ul{

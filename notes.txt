@@ -50,6 +50,21 @@ yatay menü için display inline-block etiketini kullan
 
 color tag'ında ki rgba saydamlık verir
 
+* çarpma işemi
+/ bölme işlemi
+++ bir sayı arttır
+--bir sayı azalt
+** matematikde ki üssü işareti
+== : matematikdeki Eşittir ile aynı
+=== : hem tipleri hemde değerlerinin eşit olup olmadığına bakar
++= sayıya eklemek istediğimiz kadar ekleriz
+alt shıft s kodları duzenlı hale getırır
+&& : VE birden fazla koşul olduğunda ve hepsi true olursa koşulu sağlar
+|| : VEYA sonuçtan biri true ise sonucu true çıkartır
+! : bir şeyin zıttını almak için 
+!=  : eşit değildir anlamında
+
+
  bir web sitesinde gezinme menüsü
 
 
