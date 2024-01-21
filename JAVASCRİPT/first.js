@@ -13,13 +13,13 @@ console.log({name:"zehra", surname:"cart curt"})
 
 let a=5;
 let b=10;
-var at = 300
-var isDesc = true
+let at = 300
+let isDesc = true
 
-var zeyraElm = document.getElementById("zeyra")
+let zeyraElm = document.getElementById("zeyra")
 
 function raEkleyici() {
-    var zeyraValue = zeyraElm.innerHTML
+    let zeyraValue = zeyraElm.innerHTML
 
     // zeyraElm.innerHTML = zeyraValue + "ra"
     if (isDesc) {

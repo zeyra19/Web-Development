@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .cerceve {
+      position: relative;
+      height: 300px;
+      width: 700px;
+      border: 2px solid #333;
+      background-color: #ccc;
+      overflow: hidden;
+    }
+
+    .oyuncu {
+      position: absolute;
+      top: 50%; 
+      left: 0;
+      transform: translate(0, -50%); /*konumunu ortalamak için*/
+      width: 30px;
+      height: 30px;
+      background-color: #00f; 
+    }
+
+    .spawn {
+      position: absolute;
+      top: 50%; 
+      right: 0;
+      transform: translate(0, -50%);
+      width: 30px;
+      height: 30px;
+      background-color: #f00; 
+    }
+
+    .button {
+      margin: 5px; /*butonlar arası boşluk*/
+      cursor: pointer; /*işaret imleci el'e dönsün diye*/
+      display: inline; /*alt alta olsun istiyorsan block*/
+    
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="cerceve"> <!--mavi kare ve kırmızı kare çerçevenin içinde olduğu için ikisini de çerçeve clasına aldım-->
+    <div class="oyuncu" id="oyuncu"></div>
+    <div class="spawn" id="spawn"></div>
+  </div>
+
+  <div>
+    <button class="button" onclick="hareketEt('yukari')">Yukarı</button>
+    <button class="button" onclick="hareketEt('asagi')">Aşağı</button>
+    <button class="button" onclick="yenidenBasla()">Yeniden başlat</button>
+  </div>
+
+  <script>
+    let oyuncu = document.getElementById('oyuncu'); //divlerin içine id tanıdığım için 
+    let spawn = document.getElementById('spawn');
+    const cerceve = document.querySelector('.cerceve'); //ana cerceve classını seçmek için
+
+    let hiz = 0.65; 
+    let spawnHiz = 0.65;
+    let oyunBitti = false;
+
+    function hareketEt(yon) {
+      if (oyunBitti) return;
+
+      const sinir = cerceve.offsetWidth - oyuncu.offsetWidth; // çerçevenin genişliği - oyuncunun kontrol ettiği kutunun genişliği
+      //boşluk miktarı hesaplanır
+
+    
+      if (yon === 'yukari') {
+        oyuncu.style.top = Math.max(parseFloat(oyuncu.style.top) - 20, 0) + 'px';
+      } 
+      
+      // math.max bir öğenin belirli sınırlar içinde kalmasını sağlamak için kullanılır
+
+      else if (yon === 'asagi') {
+        oyuncu.style.top = Math.min(parseFloat(oyuncu.style.top) + 20, cerceve.offsetHeight - oyuncu.offsetHeight) + 'px';
+      }
+
+      
+      if (oyuncu.offsetLeft >= sinir) {
+        oyuncu.style.left = '0px';
+        spawn.style.right = '20px'; 
+      } 
+      
+      else {
+        oyuncu.style.left = oyuncu.offsetLeft + hiz + 'px';
+        spawn.style.right = parseFloat(spawn.style.right) + hiz + 'px'; //parsefloat sayısal değer için
+      }
+
+      
+      if (carpismaKontrol()) {
+        oyunBitti = true;
+        alert('GEYM OVAA!');
+      }
+
+      requestAnimationFrame(() => hareketEt(yon));
+    }
+
+    function carpismaKontrol() {
+      let oyuncuRect = oyuncu.getBoundingClientRect(); //öğenin sınırlarını ve pozisyonunu belirlemek için
+      let spawnRect = spawn.getBoundingClientRect();
+
+      return (
+        oyuncuRect.top < spawnRect.bottom && //iki değeri karşılaştırdım
+        oyuncuRect.bottom > spawnRect.top &&
+        oyuncuRect.left < spawnRect.right &&
+        oyuncuRect.right > spawnRect.left
+      );
+    }
+
+    function yenidenBasla() {
+      oyunBitti = false;
+      oyuncu.style.left = '0px';
+      oyuncu.style.top = '50%';
+      spawn.style.right = '0px';
+
+    }
+
+    // Hareket fonksiyonunu başlat
+    hareketEt('yukari');
+
+
+  </script>
+</body>
+</html>
+
