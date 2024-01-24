@@ -29,14 +29,7 @@
     function validateNumber() {
       let input = document.getElementById("numberInput").value;
       let errorMessage = document.getElementById("errorMessage");
-
-      if (isNaN(input)) {
-        errorMessage.textContent = "LÜTFEN SAYI GİRİNİZ";
-      } 
-      
-      else {
-        errorMessage.textContent = "";
-      }
+      errorMessage.textContent = (isNaN(input)) ? "LÜTFEN SAYI GİRİNİZ": ""
     }
 
     function checkNumber() {
@@ -45,22 +38,26 @@
 
       if (isNaN(input)) {
         resultElement.textContent = "";
+        return;
       } 
-      
-      else {
+    
         input = parseFloat(input);
 
         let result = "";
-        if (input % 3 === 0 && input % 5 === 0) {
-          result = "3'e ve 5'e tam bölünebiliyor";
-        } else if (input % 5 === 0) {
+        
+        if 
+        (input % 3 === 0 && input % 5 === 0) {
+          result = 
+          "3'e ve 5'e tam bölünebiliyor";
+        } 
+        else if (input % 5 === 0) {
           result = "5'e tam bölünebiliyor";
-        } else if (input % 3 === 0) {
+        } 
+        else if (input % 3 === 0) {
           result = "3'e tam bölünebiliyor";
         }
 
-        resultElement.textContent = result;
-      }
+        resultElement.textContent = result
     }
   </script>
 
