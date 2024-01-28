@@ -128,3 +128,5 @@ function yazdir (isim, soyisim){
 console.log (isim +" "+soyisim);
 }
 yazdir ("zehra", "nur");
+
+innerHTML özelliği, bir öğenin içeriğini değiştirmek için kullanılır
