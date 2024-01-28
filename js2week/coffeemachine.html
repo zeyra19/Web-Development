@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kahve Makinesi</title>
+  <style>
+    #machine {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 2px solid #000;
+      text-align: center;
+    }
+
+    #sugarBox {
+      margin-top: 20px;
+    }
+
+    #sekerAzalt, #sekerArttir {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    #sekerMiktari {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    #kutu {
+      width: 200px;
+      height: 120px;
+      background-color: #f1f1f1;
+      margin: 20px auto; /*ortadan ortalansın diye */
+      position: relative;
+    }
+
+    .checkboxContainer {
+      display: inline-block;
+      text-align: left;
+      margin-right: 20px;
+    }
+
+    #progress-bar {
+      width: 100%;
+      background-color: #f1f1f1;
+      margin-top: 10px;
+      height: 10px;
+      position: relative;
+    }
+
+    #progress {
+      height: 100%;
+      background-color: green;
+      width: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="machine">
+    <h2>CART CURT KAHVE MAKİNESİ</h2>
+    <div id="sugarBox">
+      <p>Şeker Miktarını Seçiniz</p>
+      
+      <p id="sekerMiktari">Şeker Miktarı: 0 </p>
+      
+      <button id="sekerAzalt" onclick="azalt()">Azalt</button>
+      
+      <button id="sekerArttir" onclick="arttir()">Arttır</button>
+    </div>
+    <div id="kutu">
+      <div class="checkboxContainer">
+        <input type="checkbox" id="kahve1"><label for="kahve1">Kahve1</label><br> <br>
+        
+        <input type="checkbox" id="kahve2"><label for="kahve2">Kahve2</label><br> <br>
+        
+        <input type="checkbox" id="kahve3"><label for="kahve3">Kahve3</label>
+      </div>
+      <div class="checkboxContainer">
+        <input type="checkbox" id="kahve4"><label for="kahve4">Kahve4</label><br> <br>
+        
+        <input type="checkbox" id="kahve5"><label for="kahve5">Kahve5</label><br> <br>
+        
+        <input type="checkbox" id="kahve6"><label for="kahve6">Kahve6</label>
+      </div>
+    </div>
+    
+    <button onclick="siparisiVer()">Siparişi Ver</button>
+    <p id="durum">Sipariş bekleniyor...</p>
+    
+    <div id="progress-bar">
+      <div id="progress"></div>
+    </div>
+
+  <script>
+   let sekerMiktari = 0;
+
+    function azalt() {
+      if (sekerMiktari > 0) {
+        sekerMiktari--;
+        updateSekerMiktari();
+      }
+    }
+
+    function arttir() {
+      sekerMiktari++;
+      updateSekerMiktari();
+    }
+
+    function updateSekerMiktari() {
+      document.getElementById("sekerMiktari").innerHTML = "Şeker Miktarı: " + sekerMiktari;
+    }
+
+    function siparisiVer() {
+      document.getElementById("durum").innerHTML = "Hazırlanan İçecek:";
+
+      let selectedKahve = document.querySelector('input[type="checkbox"]:checked');
+      if (selectedKahve) {
+        document.getElementById("durum").innerHTML += " " + selectedKahve.nextSibling.innerHTML;
+      }
+      //bir sonraki ögeyi döndürsün diye
+
+      setTimeout(kahveHazir, 4000);
+      animateProgressBar();
+    }
+
+    function kahveHazir() {
+      document.getElementById("durum").innerHTML = "Kahveniz Hazır";
+      document.getElementById("progress").style.width = "100%";
+    }
+
+    function animateProgressBar() {
+      let elem = document.getElementById("progress");
+      let width = 1;
+      let id = setInterval(frame, 40);
+      // 40 milisaniye araliklarla tekrar çağır (frame et)
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  </script>
+</body>
