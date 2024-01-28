@@ -80,7 +80,7 @@
       <div class="checkboxContainer">
         <input type="checkbox" id="kahve4"><label for="kahve4">Kahve4</label><br> <br>
         
-        <input type="checkbox" id="kahve5"><label for="kahve5">Kahve5</label><br> <br>
+        <input type="checkbox" id="kahve5" value="Kapiçino"><label for="kahve5">Kahve5</label><br> <br>
         
         <input type="checkbox" id="kahve6"><label for="kahve6">Kahve6</label>
       </div>
@@ -95,6 +95,7 @@
 
   <script>
    let sekerMiktari = 0;
+   let coffeeReadyDuration = 3000;
 
     function azalt() {
       if (sekerMiktari > 0) {
@@ -102,7 +103,6 @@
         updateSekerMiktari();
       }
     }
-
     function arttir() {
       sekerMiktari++;
       updateSekerMiktari();
@@ -111,17 +111,23 @@
     function updateSekerMiktari() {
       document.getElementById("sekerMiktari").innerHTML = "Şeker Miktarı: " + sekerMiktari;
     }
-
+   
     function siparisiVer() {
       document.getElementById("durum").innerHTML = "Hazırlanan İçecek:";
 
       let selectedKahve = document.querySelector('input[type="checkbox"]:checked');
       if (selectedKahve) {
-        document.getElementById("durum").innerHTML += " " + selectedKahve.nextSibling.innerHTML;
+        document.getElementById("durum").innerHTML += " " + selectedKahve.value;
       }
-      //bir sonraki ögeyi döndürsün diye
-
-      setTimeout(kahveHazir, 4000);
+      
+      if (selectedKahve.id == "kahve1"){
+        coffeeReadyDuration = 1000
+      }
+      
+     else if (selectedKahve.id == "kahve6") {
+       coffeeReadyDuration = 6000
+     }
+      setTimeout(kahveHazir, coffeeReadyDuration);
       animateProgressBar();
     }
 
@@ -133,8 +139,8 @@
     function animateProgressBar() {
       let elem = document.getElementById("progress");
       let width = 1;
-      let id = setInterval(frame, 40);
-      // 40 milisaniye araliklarla tekrar çağır (frame et)
+      let id = setInterval(frame, coffeeReadyDuration/100);
+    
       function frame() {
         if (width >= 100) {
           clearInterval(id);
