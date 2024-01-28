@@ -71,6 +71,7 @@
     </div>
     <div id="kutu">
       <div class="checkboxContainer">
+        
         <input type="checkbox" id="kahve1"><label for="kahve1">Kahve1</label><br> <br>
         
         <input type="checkbox" id="kahve2"><label for="kahve2">Kahve2</label><br> <br>
@@ -144,7 +145,8 @@
       function frame() {
         if (width >= 100) {
           clearInterval(id);
-        } else {
+        } 
+        else {
           width++;
           elem.style.width = width + "%";
         }
