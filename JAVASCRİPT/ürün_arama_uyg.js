@@ -36,7 +36,7 @@ products.forEach(function(product){
     filteredProducts.push(product);
   }
 });
-//almış oldugum ürünün ismini uppercasele büyük harfe çevir arama yaparken inclueds metodunu kullaniyorum.bunu içeriyor mu diye bak. 0 verdim çünkü tüm string içinde arama yapsin istiyorum. harf hassasiyeti olmasin diye her iki tarafa touppercase verdim
+//almış oldugum ürünün ismini uppercasele büyük harfe çevirdim arama yaparken inclueds metodunu kullaniyorum.bunu içeriyor mu diye bak dedim. 0 verdim çünkü tüm string içinde arama yapsin istiyorum. harf hassasiyeti olmasin diye her iki tarafa touppercase verdim
 
 //bu ürünü iceriyorsa ayrı bir array de tut dedim o yüzden let filteredProductsla tanimladim
 
