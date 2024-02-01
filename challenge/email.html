@@ -45,8 +45,8 @@
   <div class="container">
     <div class="row">
 <input type="text" id="emailInput" placeholder="Email adresinizi giriniz">
-<button onclick="addEmail">Ekle</button>
-<button onclick="removeEmail">Çıkar</button>
+<button onclick="addEmail()">Ekle</button>
+<button onclick="removeEmail()">Çıkar</button>
 </div>
 <div class="row">
 <div id= "emailBorder" placeholder="Girilen Emailler">
@@ -59,15 +59,28 @@
   <script>
   
   let emails =[];
+  //recreate list fonksiyonu oluştur 108-126
   
   function validateEmail(email) {
     return true;
+  }
+  function isEmailRepeated(email) {
+    let result = false;
+    emails.forEach(function(_email){
+     if ( _email == email){
+       result = true;
+     }
+    });
+    return result;
   }
   
   
   function addEmail() {
     let emailInput = document.getElementById("emailInput");
     let emailList = document.getElementById("emailList");
+    //78-79 61in altina 
+    
+    
     let email = emailInput.value;
     
     if (!validateEmail(email)) {
@@ -75,7 +88,14 @@
       return;
     }
     
-    emails.push(email);
+    
+    if (isEmailRepeated(email)){
+      alert("Tekrarlanmış email girmeyiniz.");
+      return;
+    }
+    
+   emails.push(email);
+    emailList.innerHTML = "";
     emails.forEach(function(_email){
       let li = document.createElement("li");
       
@@ -84,10 +104,27 @@
       
     })
   }
+  function removeEmail() {
+    let emailInput = document.getElementById("emailInput");
+    let emailList = document.getElementById("emailList");
+    let email = emailInput.value; 
     
-    
-    
-    
+   let index = emails.indexOf(email);
+   if (index<0) {
+     alert("Böyle bir email yok.")
+     return;
+   }
+   emailList.innerHTML = "";
+   emails.splice(index,1); //116nin altina
+   emails.forEach(function(_email){
+      let li = document.createElement("li");
+      
+      li.innerHTML= _email;
+      emailList.appendChild(li);
+      
+    })
+   
+  }
     
   </script>
 </body>
