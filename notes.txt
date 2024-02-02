@@ -130,3 +130,31 @@ console.log (isim +" "+soyisim);
 yazdir ("zehra", "nur");
 
 innerHTML özelliği, bir öğenin içeriğini değiştirmek için kullanılır
+
+:-webkit-scrollbar {
+width} kaydırma çubuğu genişliği
+
+:-webkit-scrollbar-thumb {
+background-color:} kaydırma çubuğu rengi
+
+:-webkit-scrollbar-track {
+background-color:} kaydırma çubuğu arka plan rengi
+
+flex-direction: column; öğeler yukarıdan aşağıya doğru birbirinin altına sıralanır
+
+MARGİN= ÖĞE İLE DİĞER ÖĞELER ARASINDAKİ UZAKLIĞI TEMSİL EDER
+
+MARGİN-TOP= SADECE ÜST KISIMDAN BOŞLUK BIRAKIR
+
+MARGİN-BOTTOM= BİR ÖĞENİN ALT KISMINDAKİ BOŞLUĞU İFADE EDER VE BH BOŞLUK BİR SONRAKİ ÖĞEYLE ARASINDAKİ DİKEY UZAKLIĞI İFADE EDER
+
+PADDİNG= BİR ÖĞENİN İÇİNDEKİ İÇERİĞİN KENARLARDAN NE KADAR UZKATA OLACAĞINI BELİRLER
+
+PADDİNG-TOP= ÖĞENİN ÜST KISMINDAKİ İÇ BOŞLUĞU BELİRLER
+
+PADDİNG BOTTOM=ÖĞENİN ALT KISMINDAKİ İÇ BOŞLUĞU BELİRLER
+
+position:relative= belirtilen degerlere göre ayarlansın diye
+
+opacity: 0 tamamen şeffafken 1 tamamen opak
+

@@ -59,8 +59,15 @@
   <script>
   
   let emails =[];
-  //recreate list fonksiyonu oluştur 108-126
+  function addEmail() {
+    let emailInput = document.getElementById("emailInput");
+    let emailList = document.getElementById("emailList");
+    let email = emailInput.value;
   
+  function validateEmail(email) {
+    vregex = /@/;
+    return regex.test(email);
+  }
   function validateEmail(email) {
     return true;
   }
@@ -73,22 +80,10 @@
     });
     return result;
   }
-  
-  
-  function addEmail() {
-    let emailInput = document.getElementById("emailInput");
-    let emailList = document.getElementById("emailList");
-    //78-79 61in altina 
-    
-    
-    let email = emailInput.value;
-    
     if (!validateEmail(email)) {
       alert("Geçerli bir email adresi giriniz.");
       return;
     }
-    
-    
     if (isEmailRepeated(email)){
       alert("Tekrarlanmış email girmeyiniz.");
       return;
@@ -104,28 +99,28 @@
       
     })
   }
-  function removeEmail() {
+  function removeEmail (){
     let emailInput = document.getElementById("emailInput");
     let emailList = document.getElementById("emailList");
     let email = emailInput.value; 
+  
     
    let index = emails.indexOf(email);
    if (index<0) {
      alert("Böyle bir email yok.")
      return;
    }
+   emails.splice(index,1); 
    emailList.innerHTML = "";
-   emails.splice(index,1); //116nin altina
    emails.forEach(function(_email){
       let li = document.createElement("li");
       
       li.innerHTML= _email;
       emailList.appendChild(li);
-      
     })
-   
   }
-    
+  
+  
   </script>
 </body>
 
