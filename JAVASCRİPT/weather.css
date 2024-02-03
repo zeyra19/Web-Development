@@ -1,114 +1,82 @@
-html {
-  background: url(sky.jpeg) no-repeat center center fixed; /*yatay ve dikey olarak sayfanın ortasına yerleştirdim center centerla. fixed ile sayfa kaydirildikca sabit konumda kalsin dedim.*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; /*farklı tarayıcılarda benzer görünüm elde etmek amacıyla kullandim*/
+*{
   margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+  padding:0;
   box-sizing: border-box;
+  font-family: 'Times New Roman';
+  overflow: hidden;
+} 
+
+body {
+  background: #189f9c;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  background: -o-linear-gradient(135deg, #60a7ff, #3d385c);
+.weather {
+  width:90%;
+  height: 350px;
+  max-width: 350px;
+  background: linear-gradient(135deg, #40E0D0, #5b548a);
   color: #fff;
-  margin: 100px auto 0;
+  margin: 10px auto 0;
   border-radius: 20px;
-  padding: 40px 35px;
+  padding: 5px 5px;
   text-align:center;
 }
 
-.search{
-  width: 100%;
+.search {
+  width:100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .search input {
-  border: 0;
-  outline: 0;
+  border:0;
+  outline:0;
   background: #ebfffc;
   color: #555;
-  padding: 10px 25px;
-  height: 60px;
-  border-radius: 30px;
-  flex: 1;
-  margin-right: 16px;
-  font-size: 18px;
+  padding: 10px 10px;
+  margin: 10px;
+  font-size:17px;
 }
 
 .search button {
   border: 0;
   outline: 0;
   background: #ebfffc;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer; /* Bu, genellikle kullanıcıya bir tıklama veya etkileşim gerçekleştirilebileceğini belirtmek için kullanılır.*/
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  
 }
-
-.search button img {
-  width: 16px;
-}
-
-.weather-icon {
+/* icon pc ye geçene kadar telefonda böyle kalsın
+.weather_icon {
   width: 170px;
   margin-top: 30px;
-}
-
-.weather h1{
+} 
+*/
+.weather_two h1 {
   font-size: 80px;
   font-weight: 500;
 }
 
-.weather h2 {
-  font-size: 45px;
-  font-weight: 400;
+.weather_two h2 {
+  font-size: 30px;
+  font-weight: 200;
   margin-top: -10px;
 }
 
 .details {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin-top: 50px;
-}
-
-.column {
-  display: flex;
-  align-items: center;
-  text-align: left;
-}
-
-.column img {
-  width: 40px;
-  margin-right: 10px;
-}
-
-.humudity, .wind {
-  font-size: 28px;
-  margin-top: -6px;
-}
-
-.weather {
-  display: none;
+  padding: 0;
 }
 
 .error {
   text-align: left;
-  margin: left;
-  font-size: 14px;
+  margin-left: 10px;
+  font-size: 10px;
   margin-top: 10px;
   display: none;
 }
 
-@media(max-width: 912px) {
-  .card {
-    width: 90%;
-    max-width: 470px;
-  }
+p {
+  padding-left: 5px;
 }
