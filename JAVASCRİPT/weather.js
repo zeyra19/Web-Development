@@ -3,10 +3,10 @@ if (response.status== 404) {
   document.querySelector(".weather_two").style.display= "none"
 }
 
-if(data.weather[0].main == "Clouds") {
+if(weather[0].main == "Clouds") {
   alert("Bulut olabilir");
 }else {
-  data.weather[0].main == "Rain"
+  weather[0].main == "Rain"
   alert("Üstünü sıkı giyin");
 }
 
