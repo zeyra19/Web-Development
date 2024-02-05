@@ -90,6 +90,8 @@
     <button onclick="siparisiVer()">Siparişi Ver</button>
     <p id="durum">Sipariş bekleniyor...</p>
     
+    <button onclick="coffeeTaken()">Kahvemi Aldım</button>
+    
     <div id="progress-bar">
       <div id="progress"></div>
     </div>
@@ -97,7 +99,11 @@
   <script>
    let sekerMiktari = 0;
    let coffeeReadyDuration = 3000;
-
+   let coffeeReady = false;
+   let receivedCoffee= true;
+   let ordered= false;
+ 
+  
     function azalt() {
       if (sekerMiktari > 0) {
         sekerMiktari--;
@@ -136,7 +142,21 @@
       document.getElementById("durum").innerHTML = "Kahveniz Hazır";
       document.getElementById("progress").style.width = "100%";
     }
-
+     
+     setTimeout(function(){
+       if (ordered && !receivedCoffee) {
+         document.getElementById("durum").innerText= "kahvenizi alınız"}
+     },3000);
+     
+     function receivedCoffee() {
+       if (receivedCoffee) {
+         document.getElementById("durum").innerText= "Kahve alındı. Yeni kahve seçin";
+       }else if (!receivedCoffee){
+         alert("kahveyi al")
+       }
+     }
+      
+    
     function animateProgressBar() {
       let elem = document.getElementById("progress");
       let width = 1;
