@@ -12,15 +12,14 @@ body {
   
 }
 
-container{
-  height: 150px;
-  width: 180px;
+.container{
+  height: 100%;
+  width: 100%;
   display: grid; /*elemanin içindeki öğeleri satır ve sütunlarla düzenlemek icin kullanilir*/
-  
+
 }
 .theme-toggler {
   position: center;
-  
   color: #fff;
   cursor: pointer;
   z-index: 1;
@@ -38,6 +37,9 @@ container{
   z-index: -1;
 }
 
+.display-screen {
+ text-align: center;
+}
 #display{
  
   height: 200px;
