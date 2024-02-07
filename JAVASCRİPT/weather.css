@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman';
+  overflow: hidden;
+} 
+
+body {
+  background: #189f9c;
+}
+
+.weather {
+  width:90%;
+  height: 350px;
+  max-width: 350px;
+  background: linear-gradient(135deg, #40E0D0, #5b548a);
+  color: #fff;
+  margin: 10px auto 0;
+  border-radius: 20px;
+  padding: 5px 5px;
+  text-align:center;
+}
+
+.search {
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search input {
+  border:0;
+  outline:0;
+  background: #ebfffc;
+  color: #555;
+  padding: 10px 10px;
+  margin: 10px;
+  font-size:17px;
+}
+
+.search button {
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  
+}
+/* icon pc ye geçene kadar telefonda böyle kalsın
+.weather_icon {
+  width: 170px;
+  margin-top: 30px;
+} 
+*/
+.weather_two h1 {
+  font-size: 80px;
+  font-weight: 500;
+}
+
+.weather_two h2 {
+  font-size: 30px;
+  font-weight: 200;
+  margin-top: -10px;
+}
+
+.details {
+  padding: 0;
+}
+
+.error {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 10px;
+  margin-top: 10px;
+  display: none;
+}
+
+p {
+  padding-left: 5px;
+}

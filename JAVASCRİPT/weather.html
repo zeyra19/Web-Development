@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min
+  css" >
+  <link rel="stylesheet" href="weather.css">
+  <title>Hava Durumu Uygulaması</title>
+  
+</head>
+<body>
+<div class="weather">
+  <div class="search">
+    <input type="text" placeholder="Şehir Adı Giriniz" spellcheck="false">
+    <button> <i class="fa-solid fa-magnifying-glass"></i> </button>
+    <!--placeholder özelliği, kullanıcıya ne tür bir bilgi girmesi gerektiğini gösteren geçici,saydam bir metin sağlar. spellcheck="false" ifadesi ise yazım denetimi özelliğini devre dışı bırakır. Yani, kullanıcının girdiği metni kontrol etmek için tarayıcı tarafından yapılan otomatik yazım denetimi devre dışı bırakılır.-->
+  </div>
+  <div class="error">
+    <p>Geçersiz şehir adı</p>
+   </div>
+   
+   <div class="weather_two">
+     <img src="rain.jpeg" alt="" class="weather-icon">
+     <h1 class="temp">22°c</h1>
+     <h2 class="city">Gaziantep</h2>
+   </div>
+   
+     <div class="details">
+       <div class="colon">
+         <img src="humudity.jpeg" alt="">
+           <p class="humudity">50%</p>
+           <p>Nem</p>
+         </div>
+       </div>
+       
+       <div class="colon">
+         <img src="wind.jpeg" alt="">
+         <div>
+           <p class="wind">15 km/h</p>
+           <p>Rüzgar Hızı </p>
+         </div>
+       </div>
+     </div>
+   </div>
+</div>
+<script src="weather.js"></script>
+
+</body>
+
+</html>

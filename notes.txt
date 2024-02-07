@@ -88,3 +88,73 @@ git status
 
 değişiklikleri uzaktan getir
 git pull
+
+switch (içerisine bir değer alır) derleyici aşağıya aldığı değer hangi case'le eşit ona bakar. eşit olanı çalıştırır. 
+
+string değerini number'a çevirmek için parseInt ya da let değer = Number (farklı bir değer)
+
+numberdan string tipini dönüştürmek için toString();
+
+tooltip visualdaji elementlerin yanında açılan bilgi
+
+debugger yazilan kodlari adim adım çalıştırmak için
+
+DEGİSKENLER
+for (degisken; koşul ; arttırma-azalma){
+
+//kodlar
+}
+
+ÖRNEK
+for(let i=1; 1<=10; i++){
+console.log(i);
+}
+
+while(koşul) {
+//kodlar
+} koşul sağlamazsa yani true olmazsa kod çalışmaz
+
+do{
+//kodlar
+}while(koşul); koşul sağlamasa bile true olmasa bile kod 1 kere çalışır
+
+break= döngüyü kırmak için
+continue= döngüyü bir kere kırmak için
+
+math.floor= küsuratı atar, çevirir
+
+function metodu
+function yazdir (isim, soyisim){
+console.log (isim +" "+soyisim);
+}
+yazdir ("zehra", "nur");
+
+innerHTML özelliği, bir öğenin içeriğini değiştirmek için kullanılır
+
+:-webkit-scrollbar {
+width} kaydırma çubuğu genişliği
+
+:-webkit-scrollbar-thumb {
+background-color:} kaydırma çubuğu rengi
+
+:-webkit-scrollbar-track {
+background-color:} kaydırma çubuğu arka plan rengi
+
+flex-direction: column; öğeler yukarıdan aşağıya doğru birbirinin altına sıralanır
+
+MARGİN= ÖĞE İLE DİĞER ÖĞELER ARASINDAKİ UZAKLIĞI TEMSİL EDER
+
+MARGİN-TOP= SADECE ÜST KISIMDAN BOŞLUK BIRAKIR
+
+MARGİN-BOTTOM= BİR ÖĞENİN ALT KISMINDAKİ BOŞLUĞU İFADE EDER VE BH BOŞLUK BİR SONRAKİ ÖĞEYLE ARASINDAKİ DİKEY UZAKLIĞI İFADE EDER
+
+PADDİNG= BİR ÖĞENİN İÇİNDEKİ İÇERİĞİN KENARLARDAN NE KADAR UZKATA OLACAĞINI BELİRLER
+
+PADDİNG-TOP= ÖĞENİN ÜST KISMINDAKİ İÇ BOŞLUĞU BELİRLER
+
+PADDİNG BOTTOM=ÖĞENİN ALT KISMINDAKİ İÇ BOŞLUĞU BELİRLER
+
+position:relative= belirtilen degerlere göre ayarlansın diye
+
+opacity: 0 tamamen şeffafken 1 tamamen opak
+

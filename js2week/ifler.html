@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayı Kontrolü</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="numberInput">Sayı Girin:</label>
+  <input type="text" id="numberInput" oninput="validateNumber()">
+  <button onclick="checkNumber()">Gönder</button>
+  <p id="errorMessage" style="color: red;"></p>
+
+  <div id="result"></div>
+
+  <script>
+    function validateNumber() {
+      let input = document.getElementById("numberInput").value;
+      let errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = (isNaN(input)) ? "LÜTFEN SAYI GİRİNİZ": ""
+    }
+
+    function checkNumber() {
+      let input = document.getElementById("numberInput").value;
+      let resultElement = document.getElementById("result");
+
+      if (isNaN(input)) {
+        resultElement.textContent = "";
+        return;
+      } 
+    
+        input = parseFloat(input);
+
+        let result = "";
+        
+        if 
+        (input % 3 === 0 && input % 5 === 0) {
+          result = 
+          "3'e ve 5'e tam bölünebiliyor";
+        } 
+        else if (input % 5 === 0) {
+          result = "5'e tam bölünebiliyor";
+        } 
+        else if (input % 3 === 0) {
+          result = "3'e tam bölünebiliyor";
+        }
+
+        resultElement.textContent = result
+    }
+  </script>
+
+</body>
+</html>

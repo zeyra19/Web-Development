@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email Kontrol</title>
+  <style>
+  #container {
+    justify-content: center
+    align-items: center;
+    text-align: center;
+    
+  }
+  
+  #row{
+    display: flex
+    justify-content: center;
+    width="100%"
+  }
+    #emailBorder {
+      border: 1px solid black;
+      padding: 0px;
+      margin-bottom: 0px;
+      margin-left:0px;
+      width: 250px;
+      min-height: 40px;
+      
+      
+    }
+    
+    #emailList {
+      list-style: none;
+      padding: 0;
+    }
+    
+    #emailInput {
+      margin-bottom: 10px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+<input type="text" id="emailInput" placeholder="Email adresinizi giriniz">
+<button onclick="addEmail()">Ekle</button>
+<button onclick="removeEmail()">Çıkar</button>
+</div>
+<div class="row">
+<div id= "emailBorder" placeholder="Girilen Emailler">
+  <ul id="emailList">
+  </ul>
+</div>
+  </div>
+  </div>
+  
+  <script>
+  
+  let emails =[];
+  function addEmail() {
+    let emailInput = document.getElementById("emailInput");
+    let emailList = document.getElementById("emailList");
+    let email = emailInput.value;
+  
+  function validateEmail(email) {
+    vregex = /@/;
+    return regex.test(email);
+  }
+  function validateEmail(email) {
+    return true;
+  }
+  function isEmailRepeated(email) {
+    let result = false;
+    emails.forEach(function(_email){
+     if ( _email == email){
+       result = true;
+     }
+    });
+    return result;
+  }
+    if (!validateEmail(email)) {
+      alert("Geçerli bir email adresi giriniz.");
+      return;
+    }
+    if (isEmailRepeated(email)){
+      alert("Tekrarlanmış email girmeyiniz.");
+      return;
+    }
+    
+   emails.push(email);
+    emailList.innerHTML = "";
+    emails.forEach(function(_email){
+      let li = document.createElement("li");
+      
+      li.innerHTML= _email;
+      emailList.appendChild(li);
+      
+    })
+  }
+  function removeEmail (){
+    let emailInput = document.getElementById("emailInput");
+    let emailList = document.getElementById("emailList");
+    let email = emailInput.value; 
+  
+    
+   let index = emails.indexOf(email);
+   if (index<0) {
+     alert("Böyle bir email yok.")
+     return;
+   }
+   emails.splice(index,1); 
+   emailList.innerHTML = "";
+   emails.forEach(function(_email){
+      let li = document.createElement("li");
+      
+      li.innerHTML= _email;
+      emailList.appendChild(li);
+    })
+  }
+  
+  
+  </script>
+</body>
+
+</html>
