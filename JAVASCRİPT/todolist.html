@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapılacaklar Listesi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: beige;
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #title { /*id olanlarda # işareti ile class olanlarda . ile*/
+            text-align: center;
+            font-size: 50px;
+        }
+
+        #inputText {
+            width: 250px;
+            height: 40px;
+            border: 1px solid black;
+            outline: none;
+            font-size: 30px;
+            text-align: middle; /*texti ortalar*/
+            border-radius: 15px;
+            border: 3px solid blue;
+        }
+
+        #addToDo {
+            height: 40px;
+            width: 75px;
+            border: 1px solid black;
+            vertical-align: middle; /*butonu ortalar*/
+            font-size: 25px;
+            outline: none;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #clearToDo{
+            height: 40px;
+            width: 75px;
+            border: 1px solid black;
+            vertical-align: middle; /*butonu ortalar*/
+            font-size: 25px;
+            outline: none;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .paragraph-styling{
+            margin: 0;
+            cursor: pointer;
+            font-size: 35px;
+            color: black;
+            text-transform: capitalize; /*baş harfi küçük yazılsa bile sen onu büyük yap dedim*/
+        }
+
+        .to-dos { /*yapılacaklar ekendiğinde yukarıdan 25 px boşluk bırak dedim*/
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class = "container">
+        <h1 id = "title">Yapılacaklar</h1>
+        <div>
+            <input type="text" id="inputText">
+            <input type="button" id="addToDo" value="Ekle">
+            <input type="button" id="clearToDo" value="Çıkar">
+        </div>
+        <div class="to-dos" id="toDoContainer"></div>
+    </div>
+
+    <script>
+        let addToDoButton = document.getElementById("addToDo");
+        let toDoContainer = document.getElementById("toDoContainer");
+        let inputText = document.getElementById("inputText");
+        let clearToDo = document.getElementById("clearToDo");
+
+
+        //tanımlanan addtodobuttonunaldım. addeventlistener methodu kullanımı ile 
+        //bir nesne üzerinde tıklama , mouse ile üzerine gelme ve benzeri gibi işlemleri yaptım 
+        //ve buna bir işlev verdim
+
+        //yapılacak şeylerle arasında boşluk olsun istiyorum o yüzden paragraf diye bir element tanımlıcam
+
+        addToDoButton.addEventListener('click', function(){
+            let paragraph = document.createElement('p');
+            paragraph.classList.add('paragraph-styling'); //paragraf-style classını al paragrafa uygula dedim
+            toDoContainer.appendChild(paragraph); //todocontainerı al paragrafı onun aşağısına,childına ekle 
+            paragraph.innerHTML = inputText.value; //inputextiniçine ne yazdıysam al paragrafın içine ekle dedim
+            inputText.value = ""; //inputexte yazılan yazı aşağı ndiğinde inputu sıfırla
+
+            paragraph.addEventListener('click', function(){ //paragrafın üzerine 1 kere tıkladığımda yazdığım şeyleri uygula...
+            paragraph.style.textDecoration = 'line-through'; //bir kere tıklandığında üstünü çiz
+        });
+
+        paragraph.addEventListener('dblclick', function(){
+            toDoContainer.removeChild(paragraph); //paragraftaki yapılacaklarımızın üzerine iki kere tıkladığımızda removechildh ile yazılanları sil
+
+        });
+
+        clearToDo.addEventListener('click', function(){
+            paragraph.remove(); //yazılanları temizle
+        })
+        })
+
+
+    </script>
+</body>
+</html>
