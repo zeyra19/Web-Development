@@ -19,3 +19,24 @@
 
 //Math.random rastgele sayılar verir virgülü vardır virgülü atmak için math.floor metodunu kullanabiliriz
 // (Math.floor)(Math.random(*100));
+
+
+
+// Date
+// let tarih = new Date();
+// getler değeri almak için kullanılır
+// console.log(tarih.getFullYear());
+// console.log(tarih.getDate());
+// console.log(tarih.getDay());
+// console.log(tarih.getMinutes());
+
+// tarihi tam gün, ay, yıl şeklinde tanımlamak istiyorsak: console.log(tarih.toLocaleDateString()); metodunu kullanabiliriz
+// saat dakika saniye için: toLocaleTimeString
+// ikisini de aynı anda almak istersek toLocaleString
+
+// SETLER YENİ DEĞER VERMEK İÇİN KULLANILIR
+// tarihi x gün ileri atamak istiyoruz 
+// console.log(tarih);
+// tarih.setDate(x);
+
+// saati güncellemek istiyorsam tarih.setHours(tarih.getHours()+ x saat);

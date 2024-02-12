@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+body {
+  font-family:sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#login, #welcome {
+  text-align: center;
+}
+
+#login input, #login button {
+  margin: 5px;
+}
+
+#message {
+  color: red;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="login">
+      <h2> Giriş Ekranı</h2>
+      <input type="text" id="username" placeholder="Kullanıcı Adınızı Giriniz">
+      <input type="password" id="password" placeholder="Şifrenizi Giriniz">
+      <button onclick="login()"> Giriş Yap </button>
+      <p id="message"></p>
+    </div>
+    <div id="welcome" style="display: none;">
+      <h2 id="welcomeMessage">Hoşgeldin</h2> 
+      <p>giriş başarıyla yapıldı  </p>
+      <button onclick="logout()" id="logoutButton" >Çıkış Yap</button>
+    </div>
+  </div>
+  <script>
+  
+  
+ 
+  let message = document.getElementById("message"); 
+  
+  let userData = localStorage.getItem("userData");
+ console.log("anan", userData);
+  if(userData) {
+    showWelcomeMessage();
+  }else {
+    showLoginScreen();
+  }
+
+  function login() {
+  let username = document.getElementById("username").value; 
+  let password = document.getElementById("password").value; 
+
+  if (username === "admin" && password === "password") {
+    userData=username;
+    showWelcomeMessage();
+    localStorage.setItem("userData", username); //parametre olan username
+  }else {
+    message.textContent = "Geçersiz kullanıcı adı veya şifre girildi"; 
+  }
+ }
+
+ function logout() {
+    localStorage.removeItem("userData");
+    showLoginScreen();
+ }
+
+ function showLoginScreen() {
+    document.getElementById("login").style.display = "block"; //görünür olsun
+    document.getElementById("welcome").style.display = "none"; //görünmez olsun
+    document.getElementById("logoutButton").style.display = "none";
+ }
+
+function showWelcomeMessage() {
+    document.getElementById("welcomeMessage").innerText = "Hoşgeldin " + userData;
+    document.getElementById("login").style.display = "none";
+    document.getElementById("welcome").style.display = "block";
+    document.getElementById("logoutButton").style.display = "block";
+}
+</script>
+</body>
+</html>

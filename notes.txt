@@ -158,3 +158,44 @@ position:relative= belirtilen degerlere göre ayarlansın diye
 
 opacity: 0 tamamen şeffafken 1 tamamen opak
 
+sessionStorage.setItem("350", "zehra"); değer atar
+sessionStorage.removeItem değer siler
+sessionStorage.clear(); tüm değerleri siler
+sessionStorage.getItem(); herhangi bir değeri almak için
+.
+.
+.
+.
+.
+.
+.
+.
+
+bir kayıt ol ekranı yap, giriş yap ekranındayken kayıt ol butonu o butona basıldığında kayıt ekranına gidecek
+kişi kayıt yaptığında kullanıcı adı ve şifresi local storage e kaydolacak eğer kayıtlı kullanıcı adı ve şifresi varsa 
+kayıt ol butonuna bastığında zaten böyle bir kullanıcı var diyecek ve kayıt ekranına geçmeyecek. şifremi unuttum butonu olacak
+bu butona basıldığında şifrenizi sıfırlamak için kullanıcı adınızı giriniz yazacak. kullanıcı adı doğru girildiyse 
+2 kere şifre girme inputu koy. şifre giy ve onayla inputlar eşleşiyosa şifreyi local storage kaydet. kullanıcıyı login ekranına tükür
+
+giriş yapabilirse welcome ekranında hesabımı sil butonu olacak basıldığında confirm ekranı çıkacak onay verirse
+localstorage den tüm bilgileri silinecek
+
+kullanıcının giriş yaptığı zaman bilgisi local storagee kaydedilecek eğer 10 saniye geçtiyse tekrar login sayfası çıkacak
+
+ve her login olduğunda zaman bilgisi güncellenecek
+
+isConfirmed = confirm(“Hesabınızı gerçekten silmek istiyor musunuz?”) confirm ekranı oluşturmak için
+ if (isConfirmed) 
+
+ let now = new Date()   şimdiki zamanı oluşturur anlık zaman
+
+
+localStorage.setItem(“lastLoginDate”, now.toISOString())  localstoragea lastlogin date isminde, now paramtresini stringe çevirerek veri yazar
+
+ let lastLoginDateString = localStorage.getItem(“lastLoginDate”) localstoragedan lastlogin date bilgisinin string değerini alır 
+
+ let lastLoginDate = new Date(lastLoginDateString)   186yı tarih bilgisine çevirir
+
+tarih2ye anlık zamanı al, tarih1e lastLoginDate al
+
+saniyeFarki = Math.abs((tarih2 - tarih1) / 1000) İKİ TArih arasındaki farkı alır 1000e bölüp saniyeye çevirir

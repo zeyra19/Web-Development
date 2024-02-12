@@ -1,0 +1,105 @@
+<!-- load, run ile sayfa yüklenir
+click,run ile tek tıklanıldığında yüklenir
+dblclick ile çift tıklanıldığında yüklenir
+mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küçüktür üzerine mouse ile gelindiğinde büyür imgnin için
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+    </head>
+
+<body>
+    <div class="title">
+    <table>
+        <tr>
+            <td> <b>Hesap Makinesi</b> </td>
+        </tr>
+        <tr>
+            <td><hr></td>
+            </tr>
+        </div>
+
+            <div class="container">
+            <tr>
+                <td><input type="text" name="s1" placeholder="İlk Sayıyı Giriniz" id="s1"/></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" name="s2" placeholder="İkinci Sayıyı Giriniz" id="s2"/></td>
+            </tr>
+
+            <tr>
+                <td>
+                <input type="button" value="+" onclick="plus()"/>
+                <input type="button"  value="-" onclick="minus()"/>
+                <input type="button" value="*" onclick="multiply()"/>
+                <input type="button" value="/" onclick="divide()"/>
+                <input type="button" value="result" onclick="result()"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <input type="text" name="result" id="result" >
+                </td>
+            </tr>
+        </div>
+                </table>
+
+                <script>
+                    let total;
+                    let n1;
+                    let n2;
+
+                    function plus () {
+                        n1=document.getElementById("s1").value;
+                        n2=document.getElementById("s2").value;
+                        n1 =parseInt(n1);
+                        n2 =parseInt(n2);
+                        total = n1+n2;
+                        document.getElementById("result").value = total;
+                    }
+
+                    function minus() {
+                        n1=document.getElementById("s1").value;
+                        n2=document.getElementById("s2").value;
+                        console.log("anan", n1, n2, total);
+
+                        n1 =parseInt(n1);
+                        n2 =parseInt(n2);
+                        total = n1-n2;
+                        document.getElementById("result").value = total;
+                    }
+
+                    function multiply () {
+                        n1=document.getElementById("s1").value;
+                        n2=document.getElementById("s2").value;
+                        n1 =parseInt(n1);
+                        n2 =parseInt(n2);
+                        total = n1*n2;
+                        document.getElementById("result").value = total;
+                    }
+
+                    function divide () {
+                        n1=document.getElementById("s1").value;
+                        n2=document.getElementById("s2").value;
+                        n1 =parseInt(n1);
+                        n2 =parseInt(n2);
+                        total = n1/n2;
+                        document.getElementById("result").value = total;
+                    }
+                    function result () {
+                        document.getElementById("s1").value= "";
+                        document.getElementById("s2").value= "";
+                        document.getElementById("result").value= "";
+                    }
+
+                </script>
+            
+
+                </body>
+                </html>
