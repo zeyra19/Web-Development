@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="urunsiparis.css">
+    <title>ürün sipariş formu</title>
+</head>
+<body onload="urunAdediDoldur(); urunTaksidiDoldur();">
+    <h3>PARFÜM ÜRÜNLERİ SİPARİŞ FORMU</h3> <!--we used one column for description and the other column for data entry.-->
+    <form action="#" id="formUrun">
+        <label for="urunTipi">Ürün tipi seçimini yapınız</label> <!--to provide information about the content in the form-->
+        <span> <!--<span> etiketi giriş alanı ve açıklama metni arasında görsel bir ayrım sağlamak için kullanılabilir.-->
+            <input type="radio" name="urunTipi" id="erkekUrunleri" value="E" onchange="urunleriGetir()">
+            <label for="erkekUrunleri">Erkek ürünleri</label>
+            <input type="radio" name="urunTipi" id="kadinUrunleri" value="K" onchange="urunleriGetir()">  <!--radio tipinde olduğu için onchange kullandık-->
+            <label for="kadinUrunleri">Kadın ürünleri</label>
+        </span>
+        <label for="urunListesi"> Ürün seçimi yapınız</label>
+        <select name="" id="urunListesi" size="4"></select>
+
+        <label for="urunAdedi">Ürün adedi seçiniz</label>
+        <select name="" id="urunAdedi"></select> <!--kod karmaşası olmasın diye buraları forla doldurucam-->
+
+        <label for="urunTaksidi"> Taksit sayısını seçiniz</label>
+        <select name="" id="urunTaksidi" ></select>
+
+        <input type="button" value="Ara Toplam Hesapla" id="btnAraToplam" onclick="hesapla();">
+
+        <label for="txtBirimFiyat">Ürünün Birim Fiyatı</label> <!--A tag that contains a description of a form element and is associated with that form element.-->
+        <input type="text" name="" id="txtBirimFiyat" disabled>
+
+        <label for="txtAraToplam">Ara Toplam Fiyatı</label>
+        <input type="text" name="" id="txtAraToplam" disabled>
+
+        <label for="txtKargo">Kargo ücreti</label>
+        <input type="text" name="" id="txtKargo" disabled>
+    </form>
+
+
+    <script>
+        //girdi değişkenleri
+        let urunTipi,urunSecimi,urunSayisi,urunTaksidi;
+
+        //çıktı değişkenleri yani tutar ve kargo bölümü
+        let araToplam,odenecekToplamTutar,kargoUcreti=7;
+
+        //global her yerde kullanabildiğim döngü değişkenimi tanımlamam lazım
+        let i;
+        let liste,secenek; //listelerin içinde seçilenlerle gezicem
+        
+        //üzerinde dönmemiz gereken değişkenler
+        let erkekParfumleri=["Clein",100,"Lacoste",120,"Axe",30,"First Class",50]; 
+        let kadinParfumleri=["Burbery",150,"Avon",80,"She",60,"Ricci",130]; 
+
+        function urunAdediDoldur(){
+            for(i=1; i<=19; i++){ //adet 1den başlasın 19a kadar gitsin her seferinde bir artsın
+                secenek=document.createElement("option");
+                liste=document.getElementById("urunAdedi");
+                liste.options.add(secenek);
+                secenek.text=i;
+                
+            }
+        }
+
+        //bu iki fonksiyonu sayfa yüklenir yüklenmez body onload oldugunda ekle
+
+        function urunTaksidiDoldur(){
+            for(i=0; i<=12;i=i+3){ //taksidi ilk başta boş olsun, 12 seçenek hakkı olsun, her seferinde 3 3 artsın
+                secenek=document.createElement("option");
+                liste=document.getElementById("urunTaksidi");
+                liste.options.add(secenek);
+                secenek.text=i; //0,3,6,9 şeklinde eklicek
+                secenek.value=i; //listedeki seçili olanların değerini almak için ya texten ya valueden çağırıcaz
+            }
+        }
+
+
+        function urunleriGetir()  //hangi ürün seçildi tipine göre ona getir for döngüsüyle
+        {
+
+            document.querySelectorAll('#urunListesi option').forEach(option => option.remove());
+            //idsi producttype olanın seçeneklerini seç.her eleman için, bütün optionları temizle 
+
+            liste =document.getElementsByName("urunTipi");
+           for(i=0; i<liste.length; i++) //sıfırdan başla listenin uzunluğu kadar dön ve her seferinde art
+           {
+            if(liste[i].checked) //listede ki i.ci sıradaki seçiliyse (radiolarda checked üzerinden bakılıyor)
+            {
+            urunTipi=liste[i].value; //ürün tipi listesinin i.ci sıradaki elemanın değerini al ürün tipine ata
+            }
+           }
+        console.log(urunTipi);
+
+
+
+           if(urunTipi=="E") { //erkek parfümlerinin en başından başla uzunluğu kadar dön i yi ikişer ikişer arttır
+            
+            for(i=0; i<erkekParfumleri.length; i=i+2)
+            {
+               secenek= document.createElement("option"); //döngünün her seferinde option tipinde bir nesne oluştur ve optin değikenine ata
+               liste=document.getElementById("urunListesi"); //seçeneklerin olduğu listeyi yakala
+               liste.options.add(secenek); //bu listenin içine seçenekleri ekle dedik
+               secenek.text=erkekParfumleri[i];  //erkek parfümlerinin i.ci elemanını al seçeneğin içierisine ata
+               secenek.value=erkekParfumleri[i+1]; //parfümün fiyatını al
+
+            }
+           } else if (urunTipi=="K") {
+            for(i=0; i<kadinParfumleri.length; i=i+2)
+            {
+               secenek= document.createElement("option"); //döngünün her seferinde option tipinde bir nesne oluştur ve optin değikenine ata
+               liste=document.getElementById("urunListesi"); //seçeneklerin olduğu listeyi yakala
+               liste.options.add(secenek); //bu listenin içine seçenekleri ekle 
+               secenek.text=kadinParfumleri[i];  //kadın parfümlerinin i.ci elemanını al seçeneğin içierisine ata
+               secenek.value=kadinParfumleri[i+1]; //parfümün fiyatını al
+
+            }
+           }
+        }
+
+
+        function hesapla()
+        {
+            liste=document.getElementById("urunListesi");
+            urunSecimi=liste[liste.selectedIndex].value;//listenin seçilen içeriğinin adını ve fiyatını al ürün seçimine ata
+
+            liste=document.getElementById("urunAdedi");
+            urunAdedi=liste[liste.selectedIndex].value;
+
+            liste=document.getElementById("urunTaksidi");
+            urunTaksidi=liste[liste.selectedIndex].value;
+
+
+            araToplam=urunSecimi*urunAdedi; //urunsecimi yani fiyatı ve üründen kaç tane seçtiğimizi çarparız
+            //bu işlemi yaptıktan sonra işlemin üstüne vade farkı koymak istiyorum o yüzden if açıyorum
+
+            if(urunTaksidi==3) //ürün taksidi 3e eşitse
+            {
+                araToplam=araToplam*1.1; //ara toplamı yani sonucu 1.1 ile yaz ara toplama ata
+            }else if(urunTaksidi==6)
+            {
+                araToplam=araToplam*1.2; 
+            }else if(urunTaksidi==9)
+            {
+                araToplam=araToplam*1.3; 
+            }else if(urunTaksidi==12)
+            {
+                araToplam=araToplam*1.4; 
+            }
+           
+
+            document.getElementById("txtAraToplam").value=araToplam.toFixed(2); //ara toplamın sonunu iki basamaklı olarak göstersin
+            document.getElementById("txtBirimFiyat").value=urunSecimi;
+
+            
+            //KARGO ÜCRETİ İÇİN
+            if(araToplam<100)
+            {
+                document.getElementById("txtKargo").value=kargoUcreti; //kargo ücretine zaten 7 tl vermiştim
+                odenecekTutar=araToplam+kargoUcreti; //100 tlden küçükse 
+            }else if(araToplam>=100)
+            {
+                document.getElementById("txtKargo").value=0;
+                odenecekTutar=araToplam;
+            }
+
+            document.getElementById("sonuc").innerHTML="Ödemeniz gereken toplam tutar"+odenecekTutar;
+            
+        }
+    </script>
+</body>
+</html>

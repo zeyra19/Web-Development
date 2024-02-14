@@ -199,3 +199,5 @@ localStorage.setItem(“lastLoginDate”, now.toISOString())  localstoragea last
 tarih2ye anlık zamanı al, tarih1e lastLoginDate al
 
 saniyeFarki = Math.abs((tarih2 - tarih1) / 1000) İKİ TArih arasındaki farkı alır 1000e bölüp saniyeye çevirir
+
+substring verilen metini kopyalar yeni bir içerik oluşturur merhaba.subbstring => merhaba merhaba
