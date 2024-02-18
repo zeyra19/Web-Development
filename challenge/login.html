@@ -39,31 +39,40 @@
 
 </style>
 </head>
+
 <body>
 
 <div id="login-container">
     <h2>Giriş Ekranı</h2>
     <input type="text" id="username" placeholder="Kullanıcı Adı"><br>
     <input type="password" id="password" placeholder="Şifre"><br>
-    <button onclick="login()">Giriş Yap</button>
+    <button onclick="login()" id="login">Giriş Yap</button>
     <button onclick="register()">Kayıt Ol</button>
     <br><br>
     <button onclick="forgotPassword()">Şifremi Unuttum</button>
+    
+</div>
+
+
+ <div id="delete" style="display:none ;">
+<button onclick="forgotPassword()">Şifremi Unuttum</button>
     <button onclick="deleteAccount()">Hesabımı Sil</button>
     <p id="message"></p>
 </div>
+
+
 
 <div id="register-container" style="display: none;">
     <h2>Kayıt Ekranı</h2>
     <input type="text" id="register-username" placeholder="Kullanıcı Adı"><br>
     <input type="password" id="register-password" placeholder="Şifre"><br>
     <button onclick="doRegister()">Kayıt Yap</button>
-    <button onclick="returnToLogin()">Geri Dön</button>
+    <button onclick="clearLoginInputs(); returnToLogin()" id="return">Geri Dön</button>
     
 </div>
 
 <div id="welcome-container" style="display: none;">
-    <h2>Hoş Geldiniz</h2>
+    <h2 id="welcome-message"></h2>
     <button onclick="deleteAccount()">Hesabımı Sil</button>
 </div>
 
@@ -73,115 +82,152 @@
     <input type="password" id="new-password" placeholder="Yeni Şifre"><br><br>
     <input type="password" id="confirm-password" placeholder="Yeni Şifre Tekrar"><br><br>
     <button onclick="resetPassword()">Şifreyi Onayla</button>
-    <button onclick="returnToLogin()">Geri Dön</button>
+    <button onclick=" returnToLogin()" id="return">Geri Dön</button>
 </div>
 
 <script>
     
     let message = document.getElementById("message");
-    
-     function login() {
-        let username = document.getElementById("username").value; //37 ve 38
-        let password = document.getElementById("password").value; 
-        let userData = checkUser(); //kullanıcının bilgilerini kontrol et userdataya ata
 
-        if (userData && username=== userData.username && password=== userData && password) {
-            localStorage.setItem("loginDate", Date.now());
+    function checkUser() {
+                let user = localStorage.getItem("user");
+                if (user) { 
+                    let userData = JSON.parse(user); 
+                    return userData; 
+                }
+                return null; 
+            }
+
+     function login() {
+        let username = document.getElementById("username").value; 
+        let password = document.getElementById("password").value; 
+        let userData = checkUser(); 
+
+        if (userData && username=== userData.username && password=== userData.password) {
+            localStorage.getItem("loginDate", Date.now());
+            message.textContent= "başarılı"
+           
         }else{
-            message.textContent= "hoşgeldiniz"; 
+            message.textContent= "Kullanıcı adı veya şifre hatalı!";
+        }
+
+        if(message.textContent="başarılı") {
+            let welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.textContent = "Hoşgeldin, " + username + "!";
+            document.getElementById("forgot-password-container").style.display = "none";
+            document.getElementById("welcome-container").style.display = "block";
+            document.getElementById("login-container").style.display = "none";
         }
         }
 
         function register() {
-            document.getElementById("login-container").style.display = "none"; //giriş ekranı gözükmesin
-            document.getElementById("register-container").style.display = "block"; //kayıt ekranı görünsün
+            document.getElementById("login-container").style.display = "none"; 
+            document.getElementById("register-container").style.display = "block"; 
+            
         }
         
         function forgotPassword() {
-            document.getElementById("login-container").style.display = "none"; //giriş ekranı gözükmesin
-            document.getElementById("forgot-password-container").style.display = "block"; //şifre yenileme ekranı görünsün
+            document.getElementById("login-container").style.display = "none"; 
+            document.getElementById("forgot-password-container").style.display = "block";
+            document.getElementById("welcome-container").style.display = "none";
+            document.getElementById("register-container").style.display = "none"; 
         }
+
 
         function deleteAccount() { 
             let isConfirmed = confirm("Hesabınızı gerçekten silmek istiyor musunuz?");
             if (isConfirmed) {
-                localStorage.removeItem("user"); //kullanıcıyı ve son girişi sil
+                localStorage.removeItem("user"); 
                 localStorage.removeItem("lastLogin");
                 alert("Hesabınız başarıyla silindi.");
-                returnToLogin(); //giriş sayfasına geri dön
+                returnToLogin(); 
+                document.getElementById("register-container").style.display = "block";
+                document.getElementById("welcome-container").style.display = "none";
+                document.getElementById("forgot-password-container").style.display = "none";
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("login-container").reset();
             }
         }
 
         function doRegister() { 
-            let username = document.getElementById("register-username").value; //kayıt olan kullanıcının adını al username ata
+            let username = document.getElementById("register-username").value; 
             let password = document.getElementById("register-password").value;
-            let userData = checkUser(); //zaten var olan kullanıcı bilgilerini kontrol et ve kullanıcı bilgilerini userdataya ata
+            let userData = checkUser(); 
+            
             
             if (!userData) {
                 localStorage.setItem("user", JSON.stringify({ username, password }));
-                //localStorage da user anahtarı altında saklar
-                //tarayıcı yerel depolama aracılığıyla kullanıcı bilgilerini
-                //saklanabilir ve daha sonra kullanıcı giriş yaptığında bu bilgilere erişilebilir
                 alert("Kayıt başarılı! Giriş yapabilirsiniz");
-                returnToLogin(); //giriş sayfasına geri dön
+                returnToLogin(); 
+                
             } else {
-                alert("Zaten bir kullanıcı mevcut!"); //userdata bilgileri varsa
+                alert("Zaten bir kullanıcı mevcut!"); 
             }
         }
 
         function returnToLogin() {
-            document.getElementById("login-container").style.display = "block"; //tekrar giriş ekranına döndüğünde girişi göster
-            document.getElementById("register-container").style.display = "none";//kayıt ol ekranını gösterme
-            document.getElementById("forgot-password-container").style.display = "none"; //şifremi unuttum ekranını gösterme
+            clearLoginInputs();
+            document.getElementById("login-container").style.display = "block"; 
+            document.getElementById("register-container").style.display = "none";
+            document.getElementById("forgot-password-container").style.display = "none"; 
+            document.getElementById("welcome-container").style.display = "none";
             
         }
 
         function resetPassword() {
-            let username = document.getElementById("forgot-username").value; //idsi "forgot-password-container" olan divde ki tüm idler
+            let username = document.getElementById("forgot-username").value; 
             let newPassword = document.getElementById("new-password").value;
-            let confirmPassword = document.getElementById("confirm-password").value;
-            
-            let userData = checkUser(); //zaten var olan kullanıcı bilgilerini kontrol et ve kullanıcı bilgilerini userdataya ata
-            if (userData && username === userData.username && newPassword === confirmPassword) { 
-                userData.password = newPassword; //yeni şifreyi userdatanın içindeki şifreye atadım
+            let confirmPassword = document.getElementById("confirm-password").value; 
+           
+            let userData = checkUser(); 
+            console.log(userData);
 
-                // Kullanıcının girdiği kullanıcı adı (username) ile 
-                //userDatada ki kullanıcı adı (userData.username) eşleşiyor mu kontrol et
-                //ve yeni şifre ile tekrarı aynımı kontrol et
-                
-                localStorage.setItem("user", JSON.stringify(userData)); //bilgileri user key de sakla
-                alert("Şifre sıfırlama başarılı!");
+            if (!userData) {
+                alert("böyle bir kullanıcı bilgisi bulunamadı");
+                return;
+            }
+            if (username === userData.username && confirmPassword === newPassword) { 
+                userData.password = newPassword; 
+                localStorage.setItem("user", JSON.stringify(userData)); 
+                alert("şifre sıfırlama başarı");
                 returnToLogin();
+                document.getElementById("forgot-password-container").style.display = "none";
+                
+               
                 } else {
-                    alert("Kullanıcı adı hatalı veya şifreler eşleşmiyor");
-                }
+                    alert("kullanıcı adı veya şifre hatalı");
+                 }
+
+               
             }
 
-            function checkUser() {
-                let user = localStorage.getItem("user"); //locale userı ata
-                if (user) { //user bilgileri tanımlıysa bunu js nesnesine dönüştür userdataya ata
-                    let userData = JSON.parse(user); //kullanıcı bilgileri daha sonra tekrar kullanılsın diye
-                    return userData; //fonksiyonu durdur
-                }
-                return null; //kullanıcı bilgileri mevcut değilse veya geçerli değilse null gir
-            }
-
-            function welcomeScreen() {  
-                localStorage.setItem("lastLoginDate", now.toISOString()); //mevcut zamanı son girişe ata
+            function securityScreen() {  
+                let now = new Date(); 
                 let lastLoginDateString = localStorage.getItem("lastLoginDate");
                 let lastLoginDate = new Date(lastLoginDateString);
+                localStorage.setItem("lastLoginDate", now.toISOString()); 
+
                 let currentTime = Date.now();
                 let secondDiff = Math.abs((currentTime / lastLoginDate) /1000);
-                
-                if (secondDiff > 10) { 
+                if (secondDiff < 10) { 
                     alert("Güvenlik nedeniyle oturumunuz sona erdi. Lütfen tekrar giriş yapın.");
                     returnToLogin();
                 } else {
-                     document.getElementById("login-container").style.display = "none";
-                     document.getElementById("welcome-container").style.display = "block";
+                     document.getElementById("login-container").style.display = "block";
+                     document.getElementById("welcome-container").style.display = "none";
+                     document.getElementById("forgot-password-container").style.display = "none";
+                     document.getElementById("register-container").style.display = "none";
                     }
                     
                 }
+
+                function clearLoginInputs() {
+                    document.getElementById("username").value = ""; 
+                    document.getElementById("password").value = "";
+                }
+
+
+            
 </script>
 </body>
 

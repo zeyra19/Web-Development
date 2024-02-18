@@ -201,3 +201,21 @@ tarih2ye anlık zamanı al, tarih1e lastLoginDate al
 saniyeFarki = Math.abs((tarih2 - tarih1) / 1000) İKİ TArih arasındaki farkı alır 1000e bölüp saniyeye çevirir
 
 substring verilen metini kopyalar yeni bir içerik oluşturur merhaba.subbstring => merhaba merhaba
+
+
+alerts-bootstrap (showAlert(type, message alır))
+function showAlert(type,message){
+  const/let div = document.createElement("div);
+  div.className= alert alert- +type; 
+  div.textContent = message;
+}
+ALERT EKLEMEK İÇİN 206yı KULLANDIKTAN SONRA İF Lİ ELSELİ YERLERDE showAlert("success", "todo eklendi");
+
+alert 3 saniye sonra kaybolsun istiyorum bunun için 
+setTimeout(function(){
+div.remove();........ yani eklemiş olduğum divi remove et
+},3000)
+
+`${null}`
+
+<hr> html e bir satır aşağı atar 

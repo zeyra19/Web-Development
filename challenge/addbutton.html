@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buton oluştur</title>
+    <style>
+        .kare-button {
+            width: 150px;
+            height: 150px;
+            line-height: 150px; /*satır yüksekliği*/
+            border: solid red 2px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="ekle">Dinamik buton ekleme</button>
+    <div id="panel"></div>
+    <!--buton silmek için button id sil eklicen-->
+
+    <script>
+
+        let panelDiv=document.querySelector("#panel");
+        let ekleBtn=document.querySelector("#ekle");
+        //let silbtn #sil
+        let sayi=1;
+
+        ekleBtn.onclick=function(){ //sil işlemi için bu satırın aynısı
+            let btn =document.createElement("button");//buton nesnesi yarat
+            btn.textContent=sayi++; //
+            btn.classList="kare-button"; //butona css ekleme
+
+            panelDiv.appendChild(btn)
+        }
+
+        //document.querySelectorAll (".kare-button") let button ekle
+        //if butonların lengthi 0 dan büyükse panelde buton varsa
+        //let sonbuton eşittir buttons buttons length-1 son eklenen butonu al
+        //lastbutton.removechild (sonbuton)
+    </script>
+</body>
+</html>
