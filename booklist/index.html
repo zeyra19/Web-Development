@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Kitap Listesi Uygulaması</title>
+    <link rel="stylesheet" href="style.css" >
+  </head>
+
+  <body>
+    <section class="container">
+      <form id="book-form">
+
+        <div>
+          <label for="title">Kitabın Başlığı</label>
+          <input type="text" id="title">
+        </div>
+
+        <div>
+          <label for="author">Kitabın Yazarı</label>
+          <input type="text" id="author" >
+        </div>
+
+        <div>
+          <label for="year">Yayınlandığı Yıl</label>
+          <input type="number" id="year" >
+        </div>
+
+        <button id="btn">Kitap Ekle</button>
+        <button id="delete">Temizle</button>
+        
+      </form>
+
+      <section class="table">
+        <section class="table-section">
+          <div>Başlık</div>
+          <div>Yazar</div>
+          <div>Yıl</div>
+        </section>
+
+        <div id="book-list"></div>
+        
+
+      </section>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+
+</html>

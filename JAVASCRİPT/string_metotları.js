@@ -26,3 +26,5 @@ if(kurs.startsWith("M")){
 }
 
 //endsWith sonu şunla mı bitiyo? 
+
+events.splice(index,1); //içeriğin şununcu değerinde başla, ve şu kadar eleman sil.

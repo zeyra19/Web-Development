@@ -219,3 +219,25 @@ div.remove();........ yani eklemiş olduğum divi remove et
 `${null}`
 
 <hr> html e bir satır aşağı atar 
+
+(e) event olay parametresi
+
+
+bir todo list yaparken tüm todoları temizlemek için ilk clear butonu oluştur. her bir li'yi seç
+let clearButton=document.querySelector("#clearButton");
+clearButton.addEventListener("click", allTodosEverywhere); bu butona click yaıldığında sen allTodosEverywhere'e git
+function allTodosEverywhere(){
+let todoListesi=document.querySelectorAll(".class ismine göre seç li'leri");
+if(todoListesi.length>0){
+   yani ekranda todo varsa sen bu işi yap
+   todoListesi.foreach(function(todo){  foreahle her bir todoyu yakala ve ekrandan sil
+    todo.remove();
+   });
+}else{
+  showAlert("warning", "silmek için en az bi şey olmalı")
+}
+}
+
+keyup click metodu gibi klavye metodudur. elini klavyeden çektiğin an çalışır
+bir şeyi filtrelerken toLowerCase().trim().includes(filterValue) büyük, küçük harf hassasiyeti olmasın diye, 
+sağındaki ve solundaki boşlukları sil diye, girilen kelime içeriyor mu 
