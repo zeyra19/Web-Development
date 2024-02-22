@@ -19,7 +19,7 @@ const cityWeatherInfo = {
     "humidity": "0"
   }
 }
-
+console.log(cityWeatherInfo,)
 /*
 if (response.status== 404) {
   document.querySelectorAll(".error").style.display= "block"
