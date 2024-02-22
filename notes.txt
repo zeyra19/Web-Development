@@ -14,7 +14,7 @@ margin-bottom=alt
 margin-left= sol
 
 text align= metni hizalar LEFT,RİGHT,CENTER
-font weight=yazıyı kalınlaştırır BOLD
+font weight=yazıyı kalınlaştırır BOLD 
 font family=yazının tipini değiştirir
 font style= yazıyı italik yapar
 text transform= yazının bütün harflerini büyültüp(UPPERCASE) küçültebilir (LOWERCASE)

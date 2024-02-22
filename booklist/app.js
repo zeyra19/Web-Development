@@ -36,3 +36,4 @@ let deleteBtn = document.getElementById("delete");
 deleteBtn.addEventListener("click", () => {
     alert("Başarıyla temizlendi");
  });
+

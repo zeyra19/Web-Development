@@ -2,7 +2,7 @@
 let kurs ="Web Geliştirme Kursu";
 let karakter= kurs.charAt(3);
 
-//concat iki diziyi birlestiri
+//concat iki diziyi birlestirir
 
 //indexOf karakteri verip index numarasini alicaz. bana 3 olarak dönecek 
 let index = kurs.indexOf("G");
