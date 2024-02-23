@@ -89,7 +89,7 @@
     
     let message = document.getElementById("message");
 
-    function checkUser() {
+    const checkUser= () =>  {
                 let user = localStorage.getItem("user");
                 if (user) { 
                     let userData = JSON.parse(user); 
@@ -98,7 +98,7 @@
                 return null; 
             }
 
-     function login() {
+     const login= () =>  {
         let username = document.getElementById("username").value; 
         let password = document.getElementById("password").value; 
         let userData = checkUser(); 
@@ -120,13 +120,13 @@
         }
         }
 
-        function register() {
+        const register= () =>  {
             document.getElementById("login-container").style.display = "none"; 
             document.getElementById("register-container").style.display = "block"; 
             
         }
         
-        function forgotPassword() {
+        const forgotPassword= () => {
             document.getElementById("login-container").style.display = "none"; 
             document.getElementById("forgot-password-container").style.display = "block";
             document.getElementById("welcome-container").style.display = "none";
@@ -134,7 +134,7 @@
         }
 
 
-        function deleteAccount() { 
+        const deleteAccount= () =>  { 
             let isConfirmed = confirm("Hesabınızı gerçekten silmek istiyor musunuz?");
             if (isConfirmed) {
                 localStorage.removeItem("user"); 
@@ -149,7 +149,7 @@
             }
         }
 
-        function doRegister() { 
+        const doRegister= () =>  { 
             let username = document.getElementById("register-username").value; 
             let password = document.getElementById("register-password").value;
             let userData = checkUser(); 
@@ -165,7 +165,7 @@
             }
         }
 
-        function returnToLogin() {
+        const returnToLogin= () => {
             clearLoginInputs();
             document.getElementById("login-container").style.display = "block"; 
             document.getElementById("register-container").style.display = "none";
@@ -174,7 +174,7 @@
             
         }
 
-        function resetPassword() {
+       const resetPassword= () =>  {
             let username = document.getElementById("forgot-username").value; 
             let newPassword = document.getElementById("new-password").value;
             let confirmPassword = document.getElementById("confirm-password").value; 
@@ -201,7 +201,7 @@
                
             }
 
-            function securityScreen() {  
+            const securityScreen= () =>  {  
                 let now = new Date(); 
                 let lastLoginDateString = localStorage.getItem("lastLoginDate");
                 let lastLoginDate = new Date(lastLoginDateString);
@@ -221,7 +221,7 @@
                     
                 }
 
-                function clearLoginInputs() {
+                const clearLoginInputs= () =>  {
                     document.getElementById("username").value = ""; 
                     document.getElementById("password").value = "";
                 }

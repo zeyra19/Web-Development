@@ -55,7 +55,7 @@ mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küç�
                     let n1;
                     let n2;
 
-                    function plus () {
+                    let plus = () => {
                         n1=document.getElementById("s1").value;
                         n2=document.getElementById("s2").value;
                         n1 =parseInt(n1);
@@ -64,7 +64,7 @@ mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küç�
                         document.getElementById("result").value = total;
                     }
 
-                    function minus() {
+                    let minus =() =>{
                         n1=document.getElementById("s1").value;
                         n2=document.getElementById("s2").value;
                         console.log("anan", n1, n2, total);
@@ -75,7 +75,7 @@ mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küç�
                         document.getElementById("result").value = total;
                     }
 
-                    function multiply () {
+                   let multiply=() =>{
                         n1=document.getElementById("s1").value;
                         n2=document.getElementById("s2").value;
                         n1 =parseInt(n1);
@@ -84,7 +84,7 @@ mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küç�
                         document.getElementById("result").value = total;
                     }
 
-                    function divide () {
+                    let divide=() =>{
                         n1=document.getElementById("s1").value;
                         n2=document.getElementById("s2").value;
                         n1 =parseInt(n1);
@@ -92,7 +92,7 @@ mouseover elementin üzerinde gezindiğimizde çalışır ör bir element küç�
                         total = n1/n2;
                         document.getElementById("result").value = total;
                     }
-                    function result () {
+                    let result= () => {
                         document.getElementById("s1").value= "";
                         document.getElementById("s2").value= "";
                         document.getElementById("result").value= "";

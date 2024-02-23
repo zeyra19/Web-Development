@@ -53,7 +53,7 @@
         let erkekParfumleri=["Clein",100,"Lacoste",120,"Axe",30,"First Class",50]; 
         let kadinParfumleri=["Burbery",150,"Avon",80,"She",60,"Ricci",130]; 
 
-        function urunAdediDoldur(){
+       const urunAdediDoldur= () => {
             for(i=1; i<=19; i++){ //adet 1den başlasın 19a kadar gitsin her seferinde bir artsın
                 secenek=document.createElement("option");
                 liste=document.getElementById("urunAdedi");
@@ -65,7 +65,7 @@
 
         //bu iki fonksiyonu sayfa yüklenir yüklenmez body onload oldugunda ekle
 
-        function urunTaksidiDoldur(){
+        const urunTaksidiDoldur= () => {
             for(i=0; i<=12;i=i+3){ //taksidi ilk başta boş olsun, 12 seçenek hakkı olsun, her seferinde 3 3 artsın
                 secenek=document.createElement("option");
                 liste=document.getElementById("urunTaksidi");
@@ -76,7 +76,7 @@
         }
 
 
-        function urunleriGetir()  //hangi ürün seçildi tipine göre ona getir for döngüsüyle
+        const urunleriGetir= () =>   //hangi ürün seçildi tipine göre ona getir for döngüsüyle
         {
 
             document.querySelectorAll('#urunListesi option').forEach(option => option.remove());

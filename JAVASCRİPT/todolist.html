@@ -100,23 +100,23 @@
 
         //yapılacak şeylerle arasında boşluk olsun istiyorum o yüzden paragraf diye bir element tanımlıcam
 
-        addToDoButton.addEventListener('click', function(){
+        addToDoButton.addEventListener('click', () => {
             let paragraph = document.createElement('p');
             paragraph.classList.add('paragraph-styling'); //paragraf-style classını al paragrafa uygula dedim
             toDoContainer.appendChild(paragraph); //todocontainerı al paragrafı onun aşağısına,childına ekle 
             paragraph.innerHTML = inputText.value; //inputextiniçine ne yazdıysam al paragrafın içine ekle dedim
             inputText.value = ""; //inputexte yazılan yazı aşağı ndiğinde inputu sıfırla
 
-            paragraph.addEventListener('click', function(){ //paragrafın üzerine 1 kere tıkladığımda yazdığım şeyleri uygula...
+            paragraph.addEventListener('click', () => { //paragrafın üzerine 1 kere tıkladığımda yazdığım şeyleri uygula...
             paragraph.style.textDecoration = 'line-through'; //bir kere tıklandığında üstünü çiz
         });
 
-        paragraph.addEventListener('dblclick', function(){
+        paragraph.addEventListener('dblclick', () =>{
             toDoContainer.removeChild(paragraph); //paragraftaki yapılacaklarımızın üzerine iki kere tıkladığımızda removechildh ile yazılanları sil
 
         });
 
-        clearToDo.addEventListener('click', function(){
+        clearToDo.addEventListener('click',() =>{
             paragraph.remove(); //yazılanları temizle
         })
         })

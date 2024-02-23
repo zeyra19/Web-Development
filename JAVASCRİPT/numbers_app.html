@@ -45,9 +45,8 @@
 
         <script>
 
-            function checkNumber() {
+            let checkNumber = () => {
                 let number = document.getElementById("numberInput").value;
-               
                 let resultParagraph = document.getElementById("result");
 
                 if (number < 10) {
@@ -57,12 +56,12 @@
                 } else {
                     resultParagraph.textContent = "sayı 10'a eşittir" ;
                 }
-            }
+            };
 
-            function clearInput() {
+            let clearInput= () => {
             document.getElementById("numberInput").value = ""; //girilen değer temizlensin diye
-            document.getElementById("result").textContent = "";} //sonuç alanı temizlensin diye
+            document.getElementById("result").textContent = "";}; //sonuç alanı temizlensin diye
         </script>
-    
+
 </body>
 </html>

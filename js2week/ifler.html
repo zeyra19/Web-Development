@@ -26,13 +26,13 @@
   <div id="result"></div>
 
   <script>
-    function validateNumber() {
+    let validateNumber =() =>{
       let input = document.getElementById("numberInput").value;
       let errorMessage = document.getElementById("errorMessage");
       errorMessage.textContent = (isNaN(input)) ? "LÜTFEN SAYI GİRİNİZ": ""
     }
 
-    function checkNumber() {
+    let checkNumber =() =>{
       let input = document.getElementById("numberInput").value;
       let resultElement = document.getElementById("result");
 

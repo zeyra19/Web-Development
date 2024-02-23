@@ -1,0 +1,31 @@
+<head>
+	<title>kilo hesaplayıcısı</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css" >
+</head>
+
+<body>
+    <div class="container">
+    	<div class="panel">
+    		<h2 class="text-center">Kilonu Kontrol Et</h2>
+    		
+    			<p id="introText" class="text-center">BMI sonuçlarınızı kontrol etmek için aşağıya kilonuzu ve boyunuzu girin</p>
+    			
+    			<form>
+    				<div id="weightInput">
+    					<p>Kilonuzu giriniz (KG)</p>
+    		     		<input id="weight" type="number" pattern="[0-9]*" name="k" >
+    				</div>
+    				<div id="heightInput">
+    					<p>Boyunuzu giriniz (CM)</p>
+	    				 <input id="height" type="number"  pattern="[0-9]*" name="b">
+                          <!--sadece rakam kullanarak sayı girilsin istiyorum-->
+    				</div>
+    		     <button type="button" class="btn" onclick="calculate()">Hesapla</button>
+    		</form>
+    		<div id="results" class="text-center">BMI sonuçlarınız burada görünecek</div>
+    	</div>
+    </div>
+	<script src="app.js"></script>
+</body>
+</html>
