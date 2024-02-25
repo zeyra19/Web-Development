@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sayı tahmin etmece</title>
+    <style>
+     body, html {
+            height: 800px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .game {
+            margin-top: 10px;
+        }
+
+        input[type="button"], input[type="text"] {
+            margin-bottom: 10px;
+            padding: 20px 30px; /*kutunun büyüklük ayarları*/
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="button"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="game">
+        <input type="button" id="start" value="Oyunu Başlat">
+        <input type="button" id="guess" value="Tahmin Et" disabled> <br> <!--oyun başlamadan kullanılmasın-->
+        <input type="text" id="number" placeholder="Lütfen Bir Sayı Girin (0-100)">
+    
+    </div>
+</div>
+
+    <script>
+        let rnumber,counter,claim=3; //rastegele üretilen sayı, tahmin sayısı, hak
+        let start =document.querySelector("#start");
+        let guess =document.querySelector("#guess");
+        let number =document.querySelector("#number");
+
+        start.onclick= ()=> {
+            guess.disabled=false; 
+            rnumber=Math.round(Math.random()*100); //0-100 arası rastgele tam sayı ata
+            counter=0;
+        }
+
+        guess.onclick= ()=> {
+            counter++;
+
+            if(rnumber!= number.value && counter>=claim) {
+                alert("Hakkınız Bitti");
+                guess.disabled=true;
+            }
+            if(rnumber==number.value) {
+                alert("Tebrikler Kazandınız");
+            }
+            else if(number.value>rnumber) {
+                alert("Daha Küçük Sayı Giriniz");
+            } else {
+                alert("Daha Büyük Sayı Giriniz");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
