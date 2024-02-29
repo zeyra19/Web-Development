@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onedio Test Yan Çar</title>
+<head>
+<style>
+   body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    #container {
+        margin-top: 100px;
+    }
+
+    .start-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .question {
+        margin-top: 50px;
+    }
+</style>
+</head>
+
+<body>
+<div id="container">
+    <h1>Oyuna Başla</h1>
+    <button class="start-button" onclick="startGame()">Oyuna Başla</button>
+</div>
+
+<div id="questions" style="display: none;"> <!--İLK BAŞTA GÖSTERMEMEK İÇİN-->
+    <div class="question">
+        <h2>Soru 1: Cinsiyetin ne?</h2>
+        <input type="radio" name="question1" value="kadın">Kadın<br>
+        <input type="radio" name="question1" value="erkek"> Erkek<br>
+        <button onclick="nextQuestion(1)">Sonraki Soru</button>
+    </div>
+
+    <div class="question" style="display: none;">
+        <h2>Soru 2: Kendini nasıl tanımlarsın?</h2>
+        <input type="radio" name="question2" value="çalışkan"> Çalışkan<br>
+        <input type="radio" name="question2" value="hırslı"> Hırslı<br>
+        <input type="radio" name="question2" value="cesur"> Cesur<br>
+        <input type="radio" name="question2" value="uykucu"> Uykucu<br>
+        <button onclick="nextQuestion(2)">Sonraki Soru</button>
+    </div>
+
+    <div class="question" style="display: none;">
+        <h2>Soru 3: Seni kim motive eder?</h2>
+        <input type="radio" name="question3" value="kendim"> Kendim<br>
+        <input type="radio" name="question3" value="ailem"> Ailem<br>
+        <input type="radio" name="question3" value="arkadaşlarım"> Arkadaşlarım<br>
+        <button onclick="showResult()">Sonuç</button>
+    </div>
+
+    <div id="result" style="display: none;">
+        <h2>Sonuç:</h2>
+        <p id="result-text"></p>
+    </div>
+</div>
+
+<script>
+    function startGame() {
+        document.getElementById("questions").style.display = "block";
+        document.getElementById("container").style.display = "none";
+    }
+    
+</script>
+</body>
+</html>
