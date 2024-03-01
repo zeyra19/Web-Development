@@ -1,0 +1,231 @@
+<!-- // var interval;
+
+    // function hareketEt(yon) {
+    //   let oyuncu = document.getElementById("oyuncu");
+    //   let oyuncuHizi = 5;
+    //   let cerceve = document.querySelector(".cerceve");
+
+    //   let oyuncuY = oyuncu.offsetTop;
+
+    //   if (yon === "yukari") {
+    //     if (oyuncuY - oyuncuHizi >= 0) {
+    //       oyuncu.style.top = oyuncuY - oyuncuHizi + "px";
+    //     }
+    //   }
+
+    //   else if (yon === "asagi") {
+    //     let cerceveYuksekligi = cerceve.clientHeight;
+    //     let oyuncuYuksekligi = oyuncu.clientHeight;
+    //     if (oyuncuY + oyuncuYuksekligi + oyuncuHizi <= cerceveYuksekligi) {
+    //       oyuncu.style.top = oyuncuY + oyuncuHizi + "px";
+    //     }
+    //   }
+    //   kontrolEt();
+    // }
+
+    // function kirmiziHareket() {
+    //   let spawn = document.getElementById("spawn");
+    //   let spawnHizi = 8;
+    //   let cerceve = document.querySelector(".cerceve");
+
+    //   let cerceveYuksekligi = cerceve.clientHeight;
+    //   let spawnYuksekligi = spawn.clientHeight;
+    //   let spawnY = Math.floor(Math.random() * (cerceveYuksekligi - spawnYuksekligi));
+
+    //   spawn.style.top = spawnY + "px";
+
+    //   let interval = setInterval(function () {
+    //     let spawnX = spawn.offsetLeft;
+    //     if (spawnX > 0) {
+    //       spawn.style.left = (spawnX - spawnHizi) + "px";
+    //     } else {
+    //       clearInterval(interval);
+    //     }
+
+    //     kontrolEt();
+    //   }, 50);
+    // }
+
+    // // function spawnKonumlandir() {
+    // //   let cerceveHeight = cerceve.clientHeight;
+    // //   let cerceveWidth = cerceve.clientWidth;
+    // //   let spawnHeigt = spawn.clientHeight;
+    // //   let spawnWidth = spawn.clientWidth;
+
+    // //   let randomY = Math.floor(Math.random() * (cerceveHeight - spawnHeight));
+    // //   let randomX = Math.floor(Math.random() * (cerceveWidth - spawnWidth));
+
+    // //   spawn.style.top = randomY + "px";
+    // //   spawn.style.left = randomX + "px";
+    // // }
+
+    // function kontrolEt() {
+    //   let oyuncu = document.getElementById("oyuncu");
+    //   let spawn = document.getElementById("spawn");
+
+    //   let oyuncuRect = oyuncu.getBoundingClientRect();
+    //   let spawnRect = spawn.getBoundingClientRect();
+
+    //   if (
+    //     oyuncuRect.left < spawnRect.left + spawnRect.width &&
+    //     oyuncuRect.left + oyuncuRect.width > spawnRect.left &&
+    //     oyuncuRect.top < spawnRect.top + spawnRect.height &&
+    //     oyuncuRect.top + oyuncuRect.height > spawnRect.top
+    //   ) {
+    //     clearInterval(interval);
+    //     alert("Geym Ovaah!");
+    //   }
+    // }
+
+    // function yenidenBasla() {
+
+    // } -->
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f0f0f0;
+        }
+    
+        .cerceve {
+          position: relative;
+          height: 300px;
+          width: 700px;
+          border: 2px solid #333;
+          background-color: #ccc;
+          overflow: hidden;
+        }
+    
+        .oyuncu {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(0, -50%);
+          width: 30px;
+          height: 30px;
+          background-color: #00f;
+        }
+    
+        .spawn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 30px;
+          height: 30px;
+          background-color: #f00;
+        }
+    
+        .button {
+          margin: 5px;
+          cursor: pointer;
+          display: inline;
+        }
+      </style>
+    </head>
+    
+    <body>
+      <div class="cerceve">
+        <div class="oyuncu" id="oyuncu"></div>
+        <div class="spawn" id="spawn"></div>
+      </div>
+    
+      <div>
+        <button class="button" onclick="hareketEt('yukari')">Yukarı</button>
+        <button class="button" onclick="hareketEt('asagi')">Aşağı</button>
+        <button class="button" onclick="yenidenBasla()">Yeniden başlat</button>
+      </div>
+    
+      <script>
+        let oyuncu = document.getElementById("oyuncu");
+        let spawn = document.getElementById("spawn");
+        let cerceve = document.querySelector(".cerceve");
+        let hiz = 1;
+        let spawnHiz = 2;
+        let oyunBitti = false;
+    
+        function randomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    
+        function rastgeleKonum(element) {
+          let cerceveGenislik = cerceve.offsetWidth;
+          let cerceveYukseklik = cerceve.offsetHeight;
+          let elementGenislik = element.offsetWidth;
+          let elementYukseklik = element.offsetHeight;
+    
+          let yeniLeft = randomInt(0, cerceveGenislik - elementGenislik);
+          let yeniTop = randomInt(0, cerceveYukseklik - elementYukseklik);
+    
+          element.style.left = yeniLeft + 'px';
+          element.style.top = yeniTop + 'px';
+        }
+    
+        function hareketEt(yon) {
+          if (oyunBitti) return;
+    
+          let sinir = cerceve.offsetWidth - oyuncu.offsetWidth; //sağa sınırını hesapla
+    
+          if (yon === "yukari") {
+            oyuncu.style.top = Math.max(parseFloat(oyuncu.style.top) - 20, 0) + 'px';
+          } else if (yon === "asagi") {
+            oyuncu.style.top = Math.min(parseFloat(oyuncu.style.top) + 20, cerceve.offsetHeight - oyuncu.offsetHeight) + 'px';
+          }
+    
+          if (oyuncu.offsetLeft >= sinir) { //oyuncu sağa ulaştığında başlangıç konumuna geri dönsün
+            oyuncu.style.left = "0px";
+            setTimeout(() => {
+              rastgeleKonum(spawn);
+            }, 300);
+          } else {
+            oyuncu.style.left = oyuncu.offsetLeft + hiz + 'px';
+            spawn.style.left = parseFloat(spawn.style.left) - spawnHiz + 'px';
+          }
+    
+          if (carpismaKontrol()) {
+            oyunBitti = true;
+            alert("GEYM OVAA!");
+          }
+    
+          requestAnimationFrame(() => hareketEt(yon));
+        }
+    
+        function carpismaKontrol() {
+          let oyuncuRect = oyuncu.getBoundingClientRect();
+          let spawnRect = spawn.getBoundingClientRect();
+    
+          return (
+            oyuncuRect.top < spawnRect.bottom &&
+            oyuncuRect.bottom > spawnRect.top &&
+            oyuncuRect.left < spawnRect.right &&
+            oyuncuRect.right > spawnRect.left
+          );
+        }
+    
+        function yenidenBasla() {
+          oyunBitti = false;
+          oyuncu.style.left = '0px';
+          oyuncu.style.top = '50%'; //borderın ortasında başlasın
+          spawn.style.left = '50%';
+          spawn.style.top = '0px';
+        }
+    
+        hareketEt("yukari");
+    
+      </script>
+    </body>
+    
+    </html>
+    
