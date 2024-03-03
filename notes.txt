@@ -241,3 +241,8 @@ if(todoListesi.length>0){
 keyup click metodu gibi klavye metodudur. elini klavyeden çektiğin an çalışır
 bir şeyi filtrelerken toLowerCase().trim().includes(filterValue) büyük, küçük harf hassasiyeti olmasın diye, 
 sağındaki ve solundaki boşlukları sil diye, girilen kelime içeriyor mu 
+
+
+timing, event ve http isteklerinde asenkron yapı kullanılır
+
+callback-promise-async ve await yapılarıyla asenkronları yönetiyoruz
