@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Kullanıcı</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100vh;
+            gap: 50px;
+        }
+
+        #tittle {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 50px;
+        }
+
+        .btn-container button {
+            background: #5C032E;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 10px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .btn-container {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-container li {
+            background: black;
+            display: flex;
+            border-radius: 12px;
+            gap: 15px; /*ögeler arası yatay ve dikey boşluk*/
+            padding: 0;
+            
+        }
+
+        .user-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        li img {
+            border-radius: 50%;
+            height: 150px;
+        }
+
+        li p {
+            font-size: 22px;
+            color: white;
+        }
+
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tittle">Rastgele Kullanıcı</div>
+    <div class="btn-container">
+        <button class="btn">Yenile</button>
+    </div>
+    <ul class="user-container"></ul>
+
+    <script>
+        let userList;
+        let userContainer = document.querySelector(".user-container");
+        let btn = document.querySelector(".btn");
+
+        let getUsers = async () => {
+            let response = await fetch("https://randomuser.me/api/?results=10");
+            userList = await response.json();
+            userList = userList.results;
+
+            userList.forEach((user) => {
+                createList(user);
+            });
+        };
+
+        getUsers();
+
+        let createList = (user) => {
+            let listElement = document.createElement("li");
+            listElement.innerHTML =
+                //başlangıç
+                `
+            <div>
+                <img src=${user.picture.medium} alt="">
+            </div>
+            
+            <div class="info-container">
+                <p>${user.name.first} ${user.name.last}</p>
+                <p>${user.email}</p>
+                <p>${user.gender}</p>
+            </div>
+            
+            `;
+            //bitiş
+
+            userContainer.appendChild(listElement);
+        };
+
+        btn.addEventListener("click", () => {
+            userContainer.innerHTML = "";
+            getUsers();
+        });
+
+    </script>
+
+</body>
+
+</html>

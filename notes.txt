@@ -1,5 +1,6 @@
 HTML LESSONS: https://www.youtube.com/watch?v=Y86zzWRle3g&list=PLURN6mxdcwL_D8H1iki2YCmp-lNyNAdbz
 
+ 
 HTML dosyasını açmak için komut: CTRL + SHIFT + V
 Eşittir shift + 0
 
