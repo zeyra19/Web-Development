@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atasözü Ve Deyimler</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            background-color: #b8c6db;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+
+        }
+
+        #sonuc {
+            margin: 5rem 0;
+            font-size: 2rem
+        }
+
+        #kapsayici {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 0 1rem 0.2rem rgba(100, 100, 100, 0.1);
+            width: 60rem;
+            height: 100px;
+            margin: 2rem
+        }
+
+        #baslik {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        label,
+        input {
+            padding: 1rem;
+            margin: 1rem;
+            font-size: 2rem;
+        }
+
+        #aramaListesi {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10px;
+
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <ul id="sonuc"></ul>
+    <div id="kapsayici">
+        <h2 id="baslik">Atasözü Ve Deyim Ara</h2>
+        <label for="aramaKutusu">Aranacak Cümleyi Girin</label>
+        <input list="aramaListesi" id="aramaKutusu">
+        <datalist id="aramaListesi">
+            <!--seçenek verebilirim-->
+        </datalist>
+    </div>
+
+    <script>
+
+        // function verileriYukle() {
+        //     fetch("https://sozluk.gov.tr/atasozu")
+        //         .then((gelen) => gelen.json())
+        //         .then((veri) => console.log(veri))
+        // }
+        let sonuc = document.getElementById("sonuc");
+        let aramaListesi = document.getElementById("aramaListesi");
+        let aramaKutusu = document.getElementById("aramaKutusu");
+
+        let anahtarKelimeler = [];
+        let sozler = [];
+
+        verileriYukle();
+
+        async function verileriYukle() {
+            let gelen = await fetch("https://sozluk.gov.tr/atasozu");
+            let veri = await gelen.json();
+            console.log(veri);
+
+            veri.forEach(eleman => {
+                anahtarKelimeler.push(eleman.anahtar); //API dan gelen verilerde ki anahtar kelimeler ve sözler için
+                sozler.push(eleman.sozum);
+            });
+
+
+            let birlesmisKelimeler = [...new Set(anahtarKelimeler)];//herhangi bir değeri bir kere içersin istiyorum tekar eden kelime istemiyorum
+            console.log(birlesmisKelimeler);
+
+            let sayac = 0;
+            birlesmisKelimeler.sort(() => Math.random() - 0.5); //diziyi random karıştır
+            birlesmisKelimeler.forEach(kelime => {
+                if (sayac < 5) {
+                    let yeni = document.createElement("option");
+                    aramaListesi.appendChild(yeni);
+                    yeni.value = kelime;
+                }
+                sayac++;
+            })
+        }
+
+        aramaKutusu.addEventListener("input", (e) => sonuclariAra(e.target.value)); 
+
+        function sonuclariAra(arananKelime) {
+            sonuc.innerHTML = "";
+            let aramaKurali = new RegExp(arananKelime, 'gi');
+            let eslesenler = sozler.filter(soz => aramaKurali.test(soz));
+
+            if(arananKelime.length < 2){
+                eslesenler= [];
+            }
+
+            eslesenler.forEach(es => {
+            let siradakiSonuc = document.createElement("li");
+            sonuc.appendChild(siradakiSonuc);
+            siradakiSonuc.innerHTML= es;
+        })
+        }
+
+     
+    </script>
+
+</body>
+
+</html>
