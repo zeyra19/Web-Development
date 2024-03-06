@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hız Fren Kontrol</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        #speedometer {
+            display: inline-block;
+            background-color: gainsboro;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .speed {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .units {
+            font-size: 24px;
+        }
+
+        #gasBtn,
+        #brakeBtn {
+            display: block;
+            width: 130px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hız Kontrolü</h1>
+        <div id="speedometer">
+            <div class="speed">0</div>
+            <div class="units">km/h</div>
+        </div>
+        <button id="gasBtn">Gaz Ver</button>
+        <button id="brakeBtn">Fren</button>
+    </div>
+
+    <script>
+        let speed = 0;
+        let gasBtn = document.getElementById("gasBtn");
+        let brakeBtn = document.getElementById("brakeBtn");
+        let speedDisplay = document.querySelector(".speed");
+
+        gasBtn.addEventListener("click", () => {
+            if (speed < 100) {
+                speed++;
+                speedDisplay.textContent = speed;
+            } else {
+                alert("Hızın 100 km/h'e ulaştı yavaşla hıaanna!");
+            }
+        });
+
+        brakeBtn.addEventListener("click", () => {
+            speed = 0;
+            speedDisplay.textContent = speed;
+        });
+
+        //EĞER GAZVER BUTONUNA BASTIĞIMDA SAYAÇ OTOMATİK ARTSIN İSTİYOSAM AŞAĞIDAKİ KODLARI KULLANIRDIM
+
+        // let intervalId;
+        // gasBtn.addEventListener('mousedown', function () {
+        //     intervalId = setInterval(function () {
+        //         if (speed < 100) {
+        //             speed++;
+        //             speedDisplay.textContent = speed;
+        //         } else {
+        //             clearInterval(intervalId);
+        //             alert("Hızınız 100 km/h'e ulaştı!");
+        //         }
+        //     }, 100);
+        // });
+
+        // gasBtn.addEventListener('mouseup', function () {
+        //     clearInterval(intervalId);
+        // });
+
+
+
+    </script>
+</body>
+
+</html>
