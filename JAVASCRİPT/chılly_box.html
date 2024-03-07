@@ -93,25 +93,23 @@
     function hareketEt(yon) {
       if (oyunBitti) return;
 
-      let sinir = cerceve.offsetWidth - oyuncu.offsetWidth; //sağa sınırını hesapla
+      let sinir = cerceve.offsetWidth - oyuncu.offsetWidth; 
 
       if (yon === "yukari") {
-        oyuncu.style.top = Math.max(parseFloat(oyuncu.style.top) - 10, 0) + 'px';
+        oyuncu.style.top = Math.max(parseFloat(oyuncu.style.top) - 3, 0) + 'px';
       }
-
-      // math.max bir öğenin belirli sınırlar içinde kalmasını sağlamak içi
 
       else if (yon === "asagi") {
-        oyuncu.style.top = Math.min(parseFloat(oyuncu.style.top) + 10, cerceve.offsetHeight - oyuncu.offsetHeight) + 'px';
+        oyuncu.style.top = Math.min(parseFloat(oyuncu.style.top) + 3, cerceve.offsetHeight - oyuncu.offsetHeight) + 'px';
       }
 
 
-      if (oyuncu.offsetLeft >= sinir) { //oyuncu sağa ulaştığında başlangıç konumuna geri dönsün
+      if (oyuncu.offsetLeft >= sinir) { 
         oyuncu.style.left = "0px";
         // spawn.style.right = "0px";
         setTimeout(() => {
           rastgeleKonum(spawn);
-        }, 100);
+        }, 50);
       }
 
       else {

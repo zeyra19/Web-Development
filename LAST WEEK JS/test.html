@@ -39,6 +39,11 @@
         #nextBtn {
             display: none;
         }
+
+        #resetBtn {
+            display: none;
+            margin: 10px auto;
+        }
     </style>
 </head>
 
@@ -46,9 +51,14 @@
     <div class="container">
         <div class="quiz-box">
             <h1>Bilmeyeni Tüm Türkiye s.</h1>
+            <button id="startBtn">Teste Başla</button>
+
             <div id="question"></div>
             <div id="options"></div>
+            <div id="message"></div>
+
             <button id="nextBtn">İleri</button>
+            <button id="resetBtn">En Başa Dön</button>
         </div>
     </div>
 
@@ -73,25 +83,52 @@
         ];
 
         let currentQuestionIndex = 0;
+        let message = document.getElementById("message");
         let questionDiv = document.getElementById("question");
         let optionsDiv = document.getElementById("options");
         let nextBtn = document.getElementById("nextBtn");
+        let resetBtn = document.getElementById("resetBtn");
+        let startBtn = document.getElementById("startBtn");
+
+        startBtn.addEventListener("click", startTest);
+
+
+        function startTest() {
+            startBtn.style.display = "none";
+            questionDiv.style.display = "block";
+            optionsDiv.style.display = "block";
+            displayQuestion()
+
+        }
 
         function checkAnswer(selectedOption) {
             let currentQuestion = questions[currentQuestionIndex];
+            currentQuestion.options.forEach(option => {
+                let button = document.getElementById(option);
+                console.log(selectedOption, currentQuestion.answer)
+                button.style.color = option === currentQuestion.answer ? "rgb(1 2 230)" : "rgb(230 2 1)"
+                button.style.fontWeight = option === selectedOption ? 900 : 500
+            });
+            showNextButton();
             if (selectedOption === currentQuestion.answer) {
-                alert("HELLLLAALLLL");
-                showNextButton();
+                message.textContent = "Ananın ANI";
             } else {
-                alert("GİT GENEL KÜLTÜR ÇALIŞ YERİ");
+                message.textContent = "";
             }
         }
 
         function showNextButton() {
-            if (currentQuestionIndex < questions.length - 1) {
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById("message").textContent = "Test Bitti En Başa Dönebilirsiniz";
+                resetBtn.style.display = "block";
+                questionDiv.style.display = "none";
+                optionsDiv.style.display = "none";
+            }
+
+            else {
+                resetBtn.style.display = "none";
                 nextBtn.style.display = "block";
-            } else {
-                alert("testiyi iyi tamamladınız!");
+
             }
         }
 
@@ -99,8 +136,13 @@
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
                 displayQuestion();
+                message.textContent = "";
                 nextBtn.style.display = "none";
+            } else {
+                resetBtn.style.display = "block";
             }
+
+
         });
 
         function displayQuestion() {
@@ -109,6 +151,7 @@
             optionsDiv.innerHTML = "";
             currentQuestion.options.forEach(option => {
                 let button = document.createElement("button");
+                button.id = option;
                 button.textContent = option;
                 button.addEventListener("click", function () {
                     checkAnswer(option);
@@ -116,10 +159,15 @@
                 optionsDiv.appendChild(button);
             });
         }
+        function startAgain() {
+            message.style.display = "none";
+            resetBtn.style.display = "none";
+            startBtn.style.display = "none";
+            questionDiv.style.display = "block";
+            optionsDiv.style.display = "block";
+        }
+        resetBtn.addEventListener("click", startAgain);
 
-        displayQuestion();
-
-        //tekrar ana ekrana götüren bir function yaz
     </script>
 </body>
 

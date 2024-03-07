@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,29 +69,12 @@
         });
 
         brakeBtn.addEventListener("click", () => {
-            speed = 0;
+            speed--;
             speedDisplay.textContent = speed;
+            if(speed=== 0){
+                alert("gaz ver hıammına");
+            }
         });
-
-        //EĞER GAZVER BUTONUNA BASTIĞIMDA SAYAÇ OTOMATİK ARTSIN İSTİYOSAM AŞAĞIDAKİ KODLARI KULLANIRDIM
-
-        // let intervalId;
-        // gasBtn.addEventListener('mousedown', function () {
-        //     intervalId = setInterval(function () {
-        //         if (speed < 100) {
-        //             speed++;
-        //             speedDisplay.textContent = speed;
-        //         } else {
-        //             clearInterval(intervalId);
-        //             alert("Hızınız 100 km/h'e ulaştı!");
-        //         }
-        //     }, 100);
-        // });
-
-        // gasBtn.addEventListener('mouseup', function () {
-        //     clearInterval(intervalId);
-        // });
-
 
 
     </script>
