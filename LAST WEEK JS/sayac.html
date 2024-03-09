@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sayaç</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            border: none;
+            outline: none;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: black;
+        }
+
+        .content {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 10rem;
+        }
+
+        .counter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .counter-box {
+            width: 30%;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 100px;
+            font-weight: 600;
+            background-color: rgba(43, 42, 42, 0.959);
+            border-radius: 8px;
+        }
+
+        .button {
+            width: 80%;
+            max-width: 350px;
+            height: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 400;
+            border-radius: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .increment-btn {
+            margin: 2em 0 1em 0;
+            background-color: blue;
+            font-weight: bold;
+        }
+
+        .save-btn {
+            background-color:green;
+            font-weight: bold;
+        }
+
+        .entries p {
+            margin: 2.5rem 0 1em 0;
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .entries-field {
+            font-size: 40px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="content">
+        <div class="counter">
+            <div class="counter-box" id="count">0</div>
+            <button class="increment-btn button">ARTTIR</button>
+            <button class="save-btn button">YETER</button>
+        </div>
+
+        <div class="entries">
+            <p>ÇIKTI</p>
+            <div class="entries-field" id="save"></div>
+        </div>
+    </main>
+
+    <script>
+        let countEl =document.getElementById("count");
+        let saveEl =document.getElementById("save");
+        let incrementBtn =document.querySelector(".increment-btn");
+        let saveBtn =document.querySelector(".save-btn");
+
+        let count= 0;
+
+        incrementBtn.addEventListener("click", ()=> {
+            count+=1;
+            countEl.textContent=count;
+        });
+
+        saveBtn.addEventListener("click", ()=> {
+            let countStr = count+ ","; //virgülle ayırdım
+            saveEl.textContent= countStr;
+            countEl.textContent= 0;
+            count= 0;
+        });
+    </script>
+</body>
+
+</html>

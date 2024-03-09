@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Süreli Quiz</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            padding: 10px;
+        }
+
+        .main {
+            text-align: center;
+            padding: 10px;
+            font-size: 3em;
+            border: 3px solid white;
+            display: none;
+        }
+
+        .typingArea {
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+            font-size: 2em;
+            display: none;
+        }
+
+        .btn {
+            width: 20%;
+            font-size: 2em;
+            padding: 10px;
+            color: white;
+            background-color: rgb(110, 39, 39);
+            margin-top: 20px;
+        }
+
+        .heyyo {
+            width: 20%;
+            font-size: 2em;
+            padding: 10px;
+            color: white;
+            background-color: rgb(110, 39, 39);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .timer {
+            font-size: 3em;
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main"></div>
+        <textarea name="words" class="typingArea"></textarea>
+        <br>
+        <button class="btn" id="startBtn">Başla</button>
+        <button class="heyyo" id="contBtn" style="display:none;">Devam Et</button>
+        <button class="heyyo" id="skipBtn" style="display:none;">Boş Geç</button>
+        <div class="timer" id="timer"></div>
+
+    </div>
+
+    <script>
+        let main = document.querySelector(".main");
+        let typeArea = document.querySelector(".typingArea");
+        let startBtn = document.getElementById("startBtn");
+        let skipBtn = document.getElementById("skipBtn");
+        let contBtn = document.getElementById("contBtn");
+        let timerDisplay = document.getElementById("timer");
+
+        let words = [
+
+            "JavaScript nedir?",
+            "React nedir?",
+            "Programlama dili nedir?",
+            "Random cümleler",
+            "Programlama zor mu?",
+            "CSS nedir?",
+            "Golang nedir?",
+            "Git komutları nelerdir ?",
+        ];
+
+        let currentIndex = -1;
+        let countdown;
+        let timeLeft = 180; 
+
+        startBtn.addEventListener("click", () => {
+            main.style.display = "block";
+            typeArea.style.display = "block";
+            skipBtn.style.display = "block";
+            contBtn.style.display = "block";
+            showNextQuestion();
+            startBtn.style.display = "none";
+            skipBtn.style.display = "inline"; //yan yana dursun diye
+            contBtn.style.display = "inline";
+            typeArea.value = "";
+            typeArea.disabled = false;
+        });
+
+        skipBtn.addEventListener("click", () => {
+            showNextQuestion();
+            typeArea.value = "";
+        });
+
+        contBtn.addEventListener("click", () => {
+            showNextQuestion();
+            typeArea.value = "";
+        });
+
+        startBtn.addEventListener("click", () => {
+            startBtn.style.display = "none";
+            countdown = setInterval(updateTimer, 1000);
+            showNextQuestion();
+        });
+
+        function showNextQuestion() {
+            main.style.display = "block";
+            typeArea.style.display = "block";
+            skipBtn.style.display = "inline";
+            contBtn.style.display = "inline";
+            currentIndex = Math.floor(Math.random() * words.length);
+            main.textContent = words[currentIndex];
+        }
+
+        function updateTimer() {
+            timeLeft--;
+            timerDisplay.textContent = "Süreniz: " + timeLeft + " saniye";
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                main.style.display = "none";
+                typeArea.style.display = "none";
+                skipBtn.style.display = "none";
+                contBtn.style.display = "none";
+                timerDisplay.textContent = "Süren Bitti";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
