@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saniyeye Bağlı Yazı</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            display: flex;
+            font-size: 3rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            color: mediumblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        let text= "sesini duyana sözleri canlı.";
+        let index= 0;
+
+        function write(){
+            document.body.innerText= text.slice(0, index);
+            index++;
+
+            if(index> text.length-1) {
+                index= 0;
+            }
+        }
+        setInterval (write,50);
+    </script>
+</body>
+</html>
