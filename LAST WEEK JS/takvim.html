@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takvim</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .calendar {
+            background-color: white;
+            width: 40%;
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .month {
+            margin: 0;
+            background-color: grey;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .day {
+            font-size: 20px;
+            color: darkgray;
+        }
+
+        .day-number {
+            font-size: 90px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .year {
+            margin: 20px 0;
+            font-size: 25px;
+            color: darkgray;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calendar">
+        <p class="month" id="month">Mart</p>
+        <p class="day" id="day">Pazar</p>
+        <p class="day-number" id="day-number">10</p>
+        <p class="year" id="year">2024</p>
+    </div>
+
+    <script>
+
+        let monthEl = document.getElementById("month");
+        let day = document.getElementById("day");
+        let dayNumber = document.getElementById("day-number");
+        let year = document.getElementById("year");
+
+        let date = new Date();
+        let month = date.getMonth();
+
+        monthEl.innerHTML = date.toLocaleDateString("tr", {
+            month: "long",
+        });
+
+        day.innerHTML = date.toLocaleDateString("tr", {
+            weekday: "long",
+        });
+
+        dayNumber.innerHTML = date.getDate();
+        year.innerHTML = date.getFullYear();
+    </script>
+</body>
+
+</html>
