@@ -1,6 +1,13 @@
 nmp install -g create-react-app  yeni bir react dosyası yaratır
 
+yeni bir react projesi için ilk cmd sonra create-react-app proje adı kodlar
+
 önceki dosyaları açmak için ilk cd first-app/ sonra npm start
 projeyi durdurmak için terminalden control+C yaparız
 
 component 2 ye ayrılır class ve function 
+
+jsx'e css özellikleri ekleme
+<div style= {{ backgroundColor: 'red' }}></div>
+
+htmlde ki class jsx de className olarak değişir
