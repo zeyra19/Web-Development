@@ -2,16 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component { // oluşturduğumuz javascript classını react kütüphanesiyle genişletmiş oluyoruz
-    render() {
+
+    constructor(props) {
+        super(props)
+
+        this.state = { latitude: 25, errorMessage: ''}
+
         window.navigator.geolocation.getCurrentPosition(
-            (position) => console.log(position),
-            (error) => console.log(error)
+            (position) => {
+                this.setState({ latitude: position.coords.latitude})
+            },
+
+            (error) => {
+                this.setState({ errorMessage: error.message})
+            }
         );
-        return (
-            <div>
-                sen kuzey yarım küredesin
-            </div>
-        )
+    }
+
+    //koşullu render işlemi
+    render() {
+        if(this.state.errorMessage && !this.state.latitude) {
+            return <div> {this.state.errorMessage} </div>
+        }
+        if(!this.state.errorMessage && this.state.latitude) {
+            return <div> {this.state.latitude} </div>
+        }
+        else{
+            return <div>Loading...</div>
+        }
     }
 }
 
