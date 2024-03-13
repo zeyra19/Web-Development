@@ -11,3 +11,11 @@ jsx'e css özellikleri ekleme
 <div style= {{ backgroundColor: 'red' }}></div>
 
 htmlde ki class jsx de className olarak değişir
+
+props: parent componentden child componente veri akışı sağlarız
+<SingleComment name = 'sarah vb'  SingleComment/>
+propsda ki name bölümü projeyle bir olmalı
+
+propsa javascript değişkeni veya herhangi bir resim vermek istiyorsak küme parantezi kullanırız
+
+propsu blog-posts projesinde yer verdim
