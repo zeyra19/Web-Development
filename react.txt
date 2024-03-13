@@ -5,7 +5,9 @@ yeni bir react projesi için ilk cmd sonra create-react-app proje adı kodlar
 önceki dosyaları açmak için ilk cd first-app/ sonra npm start
 projeyi durdurmak için terminalden control+C yaparız
 
-component 2 ye ayrılır class ve function 
+component 2 ye ayrılır class ve function. Function daha klasik işlemlerde kullanılırken class based daha gelişmiş işlemlerde kullanılır
+mesela kullanıcının inputa yazdığı bir şeye cevap vereceksek
+ya da bir ağa istek atmak istiyorsak: class based
 
 jsx'e css özellikleri ekleme
 <div style= {{ backgroundColor: 'red' }}></div>
