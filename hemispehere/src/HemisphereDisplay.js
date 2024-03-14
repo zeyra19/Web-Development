@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HemisphereDisplay = () => {
+const HemisphereDisplay = (props) => {
     return(
         <div>
             Şu an KYK'desin.
