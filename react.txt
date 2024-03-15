@@ -25,7 +25,17 @@ JavaScript’te bir değer saklayacağımız zaman nasıl ki değişken oluştur
 yararlanıyorsak, React componentlerinde de değer saklamak için state’ten yararlanırız
 
 LİFECYCLE METOTLARI
-constructor state oluşturur
+constructor state oluşturur state değeri değiştirir let gibi
 render oluşturduğumuz jsx elemanlarını döner
 componentDidMount veri yükleme de veya api isteklerinde kullanılır
 componentWillUnmount silme işlemlerinde kullanabiliriz
+
+const [firstName, setFirstName] = useState('zehra') firstname zehra kısmı setFirstName kullanıcdan veri alacağımız kısım
+bunu returnla div içinde dönerim geri
+eğer ki  butona bastığımda farklı bir şey yapsın istiyorsam:
+return(
+<div>
+    <div> {firstName}  </div>
+    <div> <button onclick = {()=> {setFirstName("nuri bilge") }} > İSMİ DEĞİŞTİR </button></div>
+</div>
+)

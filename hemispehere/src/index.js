@@ -26,7 +26,7 @@ class App extends React.Component { // oluşturduğumuz javascript classını re
     }
 
 
-    //koşullu render işlemi
+    //koşullu render(ekrana yazdırma) işlemi
     render() {
         if (this.state.errorMessage && !this.state.latitude) {
             return <div> {this.state.errorMessage} </div>
