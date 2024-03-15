@@ -35,7 +35,7 @@ class App extends React.Component { // oluşturduğumuz javascript classını re
             return <div> <HemisphereDisplay latitude= {this.state.latitude} /> </div>
         }
         else {
-            return <div>Loading...</div>
+            return <div>Yükleniyor....</div>
         }
     }
 }
