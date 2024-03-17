@@ -39,3 +39,5 @@ return(
     <div> <button onclick = {()=> {setFirstName("nuri bilge") }} > İSMİ DEĞİŞTİR </button></div>
 </div>
 )
+
+return ifadesinin içinde birden fazla jsx elemanı yazamayız
