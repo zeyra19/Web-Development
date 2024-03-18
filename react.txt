@@ -41,3 +41,5 @@ return(
 )
 
 return ifadesinin içinde birden fazla jsx elemanı yazamayız
+
+fetch ve axios metodlarını API isteklerinde kullanırım
