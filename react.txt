@@ -48,3 +48,5 @@ PROPS: BİR COMPONENTTEN DİĞERİNE TAŞINAN VERİLER(data, fonksiyon yani even
 
 useState hook'u kullanılarak bir component fonksiyonel hale getirilebilirken,
 class componentlerinde state yönetimi için this.state ve this.setState() yöntemleri kullanılır.
+
+
