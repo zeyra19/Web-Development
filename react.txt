@@ -43,3 +43,8 @@ return(
 return ifadesinin içinde birden fazla jsx elemanı yazamayız
 
 fetch ve axios metodlarını API isteklerinde kullanırım
+
+PROPS: BİR COMPONENTTEN DİĞERİNE TAŞINAN VERİLER(data, fonksiyon yani event)
+
+useState hook'u kullanılarak bir component fonksiyonel hale getirilebilirken,
+class componentlerinde state yönetimi için this.state ve this.setState() yöntemleri kullanılır.
