@@ -50,3 +50,23 @@ useState hook'u kullanılarak bir component fonksiyonel hale getirilebilirken,
 class componentlerinde state yönetimi için this.state ve this.setState() yöntemleri kullanılır.
 
 
+display: initial; /* display özelliğini varsayılan değerine döndürür (yani block) */
+
+gutterBottom= metin bloğunun altında bir miktar boşluk ekler ve bu da bloğun sonlanmasını daha belirgin hale getirir.
+ Bu, özellikle bir dizi metin bloğu içeren bir sayfada,
+ her bir metin bloğunun birbirinden daha belirgin bir şekilde ayrılmasını sağlamak için kullanışlıdır.
+
+ELEVATİON özelliği, genellikle bir bileşenin stil tanımlamasında kullanılır
+ve kağıdın veya kartın yükseklik seviyesini belirlemek için önemli bir rol oynar. 
+Bu özellik, kullanıcının bir bileşenin ön planda 
+veya arka planda olduğunu daha net bir şekilde görebilmesini sağlar.
+
+
+
+
+
+
+<div className="App">
+      {/* <Login />, */}
+      <Signup />
+    </div>
