@@ -61,12 +61,4 @@ ve kağıdın veya kartın yükseklik seviyesini belirlemek için önemli bir ro
 Bu özellik, kullanıcının bir bileşenin ön planda 
 veya arka planda olduğunu daha net bir şekilde görebilmesini sağlar.
 
-
-
-
-
-
-<div className="App">
-      {/* <Login />, */}
-      <Signup />
-    </div>
+json-server --watch .\src\db.json veriyi bize getiren istek
