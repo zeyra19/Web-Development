@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "araba",
+        "price": "100"
+    },
+    {
+        "id": 2,
+        "title": "ev",
+        "price": "100"
+    },
+    {
+        "id": 3,
+        "title": "telefon",
+        "price": "100"
+    },
+    {
+        "id": 4,
+        "title": "bilgisayar",
+        "price": "500"
+    }
+]
