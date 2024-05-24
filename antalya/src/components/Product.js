@@ -7,7 +7,6 @@ function Product({ product, total, money, basket, setBasket }) {
 
 
     const addBasket= () => {
-        // setBasket([...basket, product]) //ilk sepetin tamamı sonra ürünleri ekrana bas
         const checkBasket = basket.find(item => item.id === product.id)
 
         if(checkBasket){
@@ -16,7 +15,7 @@ function Product({ product, total, money, basket, setBasket }) {
         }
         else
         {
-            setBasket([...basket, { //basketProduct
+            setBasket([...basket, { // ilk sepeti sonra yeni sepetin içeriğini ekrana bas
                 id: product.id,
                 amount: 1
             }]) //sepetteki ürün diye const açmak yerine burada oluşturdum
