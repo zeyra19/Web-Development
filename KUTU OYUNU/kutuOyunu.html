@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .frame {
+      position: relative;
+      height: 300px;
+      width: 700px;
+      border: 2px solid #333;
+      background-color: #ccc;
+      overflow: hidden;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .player {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translate(0, -50%);
+      width: 30px;
+      height: 30px;
+      background-color: #00f;
+      border-radius: 50%;
+    }
+
+    .obstacle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #f00;
+      border-radius: 50%;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .button {
+      margin: 5px;
+      cursor: pointer;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Avoid the Red Circles</div>
+    <div class="frame">
+      <div class="player" id="player"></div>
+      <!-- Multiple obstacles will be added here -->
+    </div>
+
+    <div class="button-container">
+      <button class="button" onclick="move('up')">Up</button>
+      <button class="button" onclick="move('down')">Down</button>
+      <button class="button" onclick="startGame()">Start</button>
+      <button class="button" onclick="restartGame()">Restart</button>
+    </div>
+  </div>
+
+  <script>
+    let player = document.getElementById("player");
+    let frame = document.querySelector(".frame");
+    let speed = 2; // Obstacle speed
+    let gameOver = false;
+    let obstacles = [];
+    const numberOfObstacles = 6;
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowUp') {
+        move('up');
+      } else if (event.key === 'ArrowDown') {
+        move('down');
+      }
+    });
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function randomPosition(element) {
+      let frameWidth = frame.offsetWidth;
+      let frameHeight = frame.offsetHeight;
+      let elementWidth = element.offsetWidth;
+      let elementHeight = element.offsetHeight;
+
+      let newLeft = randomInt(0, frameWidth - elementWidth);
+      let newTop = randomInt(0, frameHeight - elementHeight);
+
+      element.style.left = newLeft + 'px';
+      element.style.top = newTop + 'px';
+    }
+
+    function createObstacles() {
+      for (let i = 0; i < numberOfObstacles; i++) {
+        let obstacle = document.createElement('div');
+        obstacle.classList.add('obstacle');
+        randomPosition(obstacle);
+        frame.appendChild(obstacle);
+        obstacles.push(obstacle);
+      }
+    }
+
+    function move(direction) {
+      if (gameOver) return;
+
+      let playerTop = parseFloat(player.style.top);
+
+      if (direction === "up") {
+        player.style.top = Math.max(playerTop - 20, 0) + 'px';
+      } else if (direction === "down") {
+        player.style.top = Math.min(playerTop + 20, frame.offsetHeight - player.offsetHeight) + 'px';
+      }
+
+      if (checkCollision()) {
+        gameOver = true;
+        alert("GAME OVER!");
+      }
+    }
+
+    function checkCollision() {
+      let playerRect = player.getBoundingClientRect();
+      let frameRect = frame.getBoundingClientRect();
+
+      return obstacles.some(obstacle => {
+        let obstacleRect = obstacle.getBoundingClientRect();
+        return (
+          playerRect.top < obstacleRect.bottom &&
+          playerRect.bottom > obstacleRect.top &&
+          playerRect.left < obstacleRect.right &&
+          playerRect.right > obstacleRect.left &&
+          playerRect.bottom > frameRect.top &&
+          playerRect.top < frameRect.bottom
+        );
+      });
+    }
+
+    function restartGame() {
+      gameOver = false;
+      player.style.left = '10px';
+      player.style.top = frame.offsetHeight / 2 - player.offsetHeight / 2 + 'px';
+      obstacles.forEach(obstacle => frame.removeChild(obstacle));
+      obstacles = [];
+      createObstacles();
+    }
+
+    function startGame() {
+      restartGame();
+      moveObstacles();
+    }
+
+    function moveObstacles() {
+      if (gameOver) return;
+
+      obstacles.forEach(obstacle => {
+        let obstacleLeft = parseFloat(obstacle.style.left);
+        obstacle.style.left = (obstacleLeft - speed) + 'px';
+
+        if (obstacleLeft <= -obstacle.offsetWidth) {
+          randomPosition(obstacle);
+          obstacle.style.left = frame.offsetWidth + 'px';
+        }
+      });
+
+      if (!gameOver) {
+        requestAnimationFrame(moveObstacles);
+      }
+
+      if (checkCollision()) {
+        gameOver = true;
+        alert("GAME OVER!");
+      }
+    }
+
+  </script>
+</body>
+
+</html>
