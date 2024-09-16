@@ -1,0 +1,82 @@
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b1d23;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Logo and Text Styling */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.logo-text .highlight {
+  color: #1da1f2;
+}
+
+/* Navbar Links Styling */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  margin-left: 5px;
+  color: #1da1f2;
+}
+
+/* Buttons Styling */
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.free-trial {
+  background-color: #ffcc33;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.login {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login:hover, .free-trial:hover {
+  opacity: 0.8;
+}

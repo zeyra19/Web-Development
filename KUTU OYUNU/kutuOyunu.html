@@ -63,6 +63,12 @@
       cursor: pointer;
       display: inline-block;
     }
+
+    #pause-message {
+      display: none;
+      font-size: 20px;
+      color: #f00;
+    }
   </style>
 </head>
 
@@ -71,22 +77,23 @@
     <div class="title">Avoid the Red Circles</div>
     <div class="frame">
       <div class="player" id="player"></div>
-      <!-- Multiple obstacles will be added here -->
     </div>
-
     <div class="button-container">
       <button class="button" onclick="move('up')">Up</button>
       <button class="button" onclick="move('down')">Down</button>
       <button class="button" onclick="startGame()">Start</button>
       <button class="button" onclick="restartGame()">Restart</button>
     </div>
+    <div id="pause-message">You can press Enter to continue</div>
   </div>
 
   <script>
     let player = document.getElementById("player");
     let frame = document.querySelector(".frame");
-    let speed = 2; // Obstacle speed
+    let pauseMessage = document.getElementById("pause-message");
+    let speed = 2;
     let gameOver = false;
+    let gamePaused = false;
     let obstacles = [];
     const numberOfObstacles = 6;
 
@@ -95,6 +102,14 @@
         move('up');
       } else if (event.key === 'ArrowDown') {
         move('down');
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        if (gamePaused) {
+          resumeGame();
+        } else {
+          startGame();
+        }
+      } else if (event.key.toLowerCase() === 'p') {
+        pauseGame();
       }
     });
 
@@ -126,7 +141,7 @@
     }
 
     function move(direction) {
-      if (gameOver) return;
+      if (gameOver || gamePaused) return;
 
       let playerTop = parseFloat(player.style.top);
 
@@ -161,6 +176,7 @@
 
     function restartGame() {
       gameOver = false;
+      gamePaused = false;
       player.style.left = '10px';
       player.style.top = frame.offsetHeight / 2 - player.offsetHeight / 2 + 'px';
       obstacles.forEach(obstacle => frame.removeChild(obstacle));
@@ -173,8 +189,19 @@
       moveObstacles();
     }
 
+    function pauseGame() {
+      gamePaused = true;
+      pauseMessage.style.display = 'block';
+    }
+
+    function resumeGame() {
+      gamePaused = false;
+      pauseMessage.style.display = 'none';
+      moveObstacles();
+    }
+
     function moveObstacles() {
-      if (gameOver) return;
+      if (gameOver || gamePaused) return;
 
       obstacles.forEach(obstacle => {
         let obstacleLeft = parseFloat(obstacle.style.left);
@@ -186,7 +213,7 @@
         }
       });
 
-      if (!gameOver) {
+      if (!gameOver && !gamePaused) {
         requestAnimationFrame(moveObstacles);
       }
 
@@ -195,7 +222,6 @@
         alert("GAME OVER!");
       }
     }
-
   </script>
 </body>
 
