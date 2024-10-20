@@ -1,2 +1,2 @@
-*.html linguist-language=Python
-*.ts linguist-language=Python
+*.html linguist-language=JavaScript
+*.ts linguist-language= JavaScript
