@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 600px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #fcfcfc;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+        .content {
+            padding: 15px;
+            text-align: center;
+        }
+        .content .main-border {
+            position: relative;
+            display: inline-block;
+            padding: 15px;
+            width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fcfcfc;
+            overflow: hidden;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        .content .main-border div:first-child {
+            text-align: left;
+            padding-left: 20px;
+            font-weight: bold;
+        }
+        .content .child-border {
+            position: relative;
+            display: inline-block;
+            padding: 30px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fcfcfc;
+            overflow: hidden;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        .content .hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+        .content .child-border:hover .hover-overlay {
+            opacity: 1;
+        }
+        .content .image-border:hover img {
+            opacity: 0.3;
+        }
+        .content p {
+            font-size: 14px;
+            color: #555;
+        }
+        .footer {
+            background-color: #fcfcfc;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+        .footer p {
+            font-size: 12px;
+            color: #777;
+            margin: 5px 0;
+        }
+        .hover-overlay a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .hover-overlay a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>
+                <strong>{{source_user_full_name}}</strong> ({{source_user_email}}) has granted you permission to
+                {{permissions}} {{item_type}}:
+            </p>
+        </div>
+        <div class="content">
+            <div class="main-border">
+                    <div>
+                        <a href="{{folder_link}}" target="_blank" style="text-decoration: none; color: inherit;">
+                            {{folder_name}} Python
+                        </a>
+                    </div>
+                <div class="child-border">
+                    <div class="hover-overlay">
+                        <a href="{{ link}}" target="_blank">Open</a>
+                    </div>
+                    <p>You can click on the file to access it.</p>
+                    <p>{{source_user_full_name}} is the owner</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Thank you for using our service.</p>
+            <p>&copy; 2024 FolSec. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
