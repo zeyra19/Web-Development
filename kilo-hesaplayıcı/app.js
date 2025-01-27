@@ -4,9 +4,9 @@ let calculate =() => {
 	weight = document.getElementById("weight").value;
 	height = document.getElementById("height").value;
 	error = "Lütfen bir değer giriniz.";
-	height /= 100; //metre cinsinden hesaplamak için 100e böldüm
-	height *= height; //boyun karesini aldım
-	bmi = weight/height; //boy kiloyu böl bmiyi ver
+	height /= 100;
+	height *= height;
+	bmi = weight/height;
 	bmi = bmi.toFixed(1); //sonuç en fazla bir ondalık basamağa sahip olsun
 
 	if (bmi <= 18.4) {
